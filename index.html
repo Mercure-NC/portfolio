@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TAIRIO Yoran — BTS SIO SISR</title>
+  <title>TAIRIO Yoran — BTS SIO SISR | SOC & Cybersécurité</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -100,7 +100,6 @@
 
     .hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; }
 
-    /* Grand titre portfolio */
     .hero-portfolio-title {
       font-family: 'DM Mono', monospace;
       font-size: clamp(0.8rem, 1.5vw, 1.05rem);
@@ -401,17 +400,22 @@
       background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--muted);
     }
 
-    /* ── VEILLE TECHNOLOGIQUE ── */
+    /* ── VEILLE TECHNOLOGIQUE SOC ── */
     .veille-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
     }
     .veille-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 6px; padding: 2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
       transition: border-color 0.3s, transform 0.3s;
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
-    .veille-card:hover { border-color: rgba(92,157,255,0.4); transform: translateY(-3px); }
+    .veille-card:hover { border-color: rgba(92,157,255,0.5); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.3); }
     .veille-card::after {
       content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
       background: var(--grad); transform: scaleX(0); transform-origin: left;
@@ -420,24 +424,31 @@
     .veille-card:hover::after { transform: scaleX(1); }
     .veille-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; }
     .veille-icon {
-      width: 42px; height: 42px; border-radius: 6px; flex-shrink: 0;
-      background: rgba(92,157,255,0.1); border: 1px solid rgba(92,157,255,0.2);
-      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(92,157,255,0.12); border: 1px solid rgba(92,157,255,0.3);
+      display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
     }
-    .veille-theme { font-size: 0.95rem; font-weight: 700; }
+    .veille-theme { font-size: 1rem; font-weight: 800; letter-spacing: -0.3px; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .veille-date {
-      font-family: 'DM Mono', monospace; font-size: 0.68rem;
-      color: var(--blue); margin-bottom: 0.8rem; letter-spacing: 0.06em;
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: var(--blue); margin-bottom: 0.9rem; letter-spacing: 0.06em;
+      border-left: 2px solid var(--mauve); padding-left: 0.7rem;
     }
-    .veille-desc { color: var(--muted); font-size: 0.84rem; line-height: 1.72; margin-bottom: 1rem; }
-    .veille-sources { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .veille-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.72; margin-bottom: 1rem; }
+    .veille-sources { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.4rem; }
     .vsource {
-      font-family: 'DM Mono', monospace; font-size: 0.63rem;
-      color: var(--muted); background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 0.18rem 0.6rem; border-radius: 2px;
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      color: var(--white); background: rgba(160,118,249,0.15);
+      border: 1px solid rgba(160,118,249,0.3);
+      padding: 0.2rem 0.7rem; border-radius: 20px; transition: all 0.2s;
     }
-    .vsource::before { content: '↗ '; }
+    .vsource::before { content: '↗ '; opacity: 0.8; }
+    .vsource:hover { background: var(--mauve); color: var(--bg); border-color: var(--mauve); cursor: default; }
+    .news-badge {
+      display: inline-block; background: rgba(92,157,255,0.2); color: var(--blue);
+      font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.6rem;
+      border-radius: 20px; margin-bottom: 0.8rem; letter-spacing: 0.05em;
+    }
 
     /* ── CONTACT ── */
     .contact-inner {
@@ -572,7 +583,6 @@
     <p class="ssub">Projets réalisés en cours, en TP et en autonomie dans le cadre de mon BTS SIO.</p>
 
     <div class="proj-grid">
-
       <div class="proj-card wide pc">
         <div class="proj-thumb">🖧</div>
         <div class="ptags">
@@ -630,7 +640,6 @@
         </p>
         <a href="#" class="plink">Voir le projet →</a>
       </div>
-
     </div>
   </section>
 
@@ -641,7 +650,6 @@
     <p class="ssub">Des compétences acquises en cours, en TP et par la pratique personnelle.</p>
 
     <div class="skills-wrap">
-
       <div class="skill-group">
         <div class="sg-head">
           <div class="sg-icon">🖧</div>
@@ -716,7 +724,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -727,7 +734,6 @@
     <p class="ssub">Mon itinéraire scolaire et mes formations dans l'informatique.</p>
 
     <div class="timeline">
-
       <div class="tl-item">
         <div class="tl-date">2025 → 2026</div>
         <div class="tl-line"><div class="tl-dot"></div><div class="tl-connector"></div></div>
@@ -754,7 +760,6 @@
           </p>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -765,7 +770,6 @@
     <p class="ssub">Mes immersions en entreprise dans le cadre du BTS SIO.</p>
 
     <div class="stages-grid">
-
       <div class="stage-card">
         <div class="stage-header">
           <div class="stage-company">Haut-Commissariat de la NC</div>
@@ -802,7 +806,6 @@
           <span class="sskill">Bash</span>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -813,7 +816,6 @@
     <p class="ssub">Certifications obtenues ou en cours de préparation pour valider mes compétences techniques.</p>
 
     <div class="cert-grid">
-
       <div class="cert-card">
         <div class="cert-icon">🌐</div>
         <div class="cert-body">
@@ -830,7 +832,7 @@
           <div class="cert-name">NDG Linux Essentials</div>
           <div class="cert-org">Cisco / Linux Professional Institute</div>
           <p class="cert-desc">Commandes Linux essentielles, gestion des fichiers, permissions et premiers scripts shell.</p>
-          <span class="cert-status inprogress">en cours</span>
+          <span class="cert-status inprogress">En cours</span>
         </div>
       </div>
 
@@ -840,7 +842,7 @@
           <div class="cert-name">Introduction to Cybersecurity</div>
           <div class="cert-org">Cisco Networking Academy</div>
           <p class="cert-desc">Concepts fondamentaux de la cybersécurité : menaces, vulnérabilités, bonnes pratiques de protection.</p>
-          <span class="cert-status inprogress">en cours</span>
+          <span class="cert-status inprogress">En cours</span>
         </div>
       </div>
 
@@ -873,381 +875,16 @@
           <span class="cert-status planned">Prévu 2026</span>
         </div>
       </div>
-
     </div>
   </section>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TAIRIO Yoran — BTS SIO SISR | SOC & Cybersécurité</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg:      #07080f;
-      --bg2:     #0c0e1a;
-      --white:   #e8eaf6;
-      --blue:    #5c9dff;
-      --mauve:   #a076f9;
-      --grad:    linear-gradient(135deg, #5c9dff, #a076f9);
-      --muted:   #6b7094;
-      --border:  rgba(160,118,249,0.15);
-      --card:    #0e1020;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--white);
-      font-family: 'Syne', sans-serif;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity: 0.8;
-    }
-
-    /* ── NAV (identique) ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4.5rem;
-      background: rgba(7,8,15,0.85);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      font-size: 1.1rem; font-weight: 800; letter-spacing: -0.02em;
-      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    nav ul { list-style: none; display: flex; gap: 2rem; }
-    nav ul a {
-      text-decoration: none; color: var(--muted);
-      font-family: 'DM Mono', monospace; font-size: 0.72rem;
-      letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s;
-    }
-    nav ul a:hover { color: var(--mauve); }
-    .nav-btn {
-      background: transparent;
-      border: 1px solid var(--mauve);
-      color: var(--mauve) !important;
-      padding: 0.38rem 1rem; border-radius: 3px;
-      transition: background 0.2s, color 0.2s !important;
-    }
-    .nav-btn:hover { background: var(--mauve) !important; color: var(--bg) !important; }
-
-    /* ── HERO (identique) ── */
-    #hero {
-      position: relative; min-height: 100vh;
-      display: flex; align-items: center;
-      padding: 0 4.5rem; overflow: hidden;
-    }
-    .hgrid {
-      position: absolute; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(92,157,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(92,157,255,0.04) 1px, transparent 1px);
-      background-size: 55px 55px;
-    }
-    .orb1 {
-      position: absolute; z-index: 0;
-      width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(160,118,249,0.2) 0%, transparent 65%);
-      right: -80px; top: 50%; transform: translateY(-50%);
-      animation: float1 7s ease-in-out infinite;
-    }
-    .orb2 {
-      position: absolute; z-index: 0;
-      width: 350px; height: 350px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(92,157,255,0.15) 0%, transparent 65%);
-      left: 30%; bottom: 5%;
-      animation: float2 9s ease-in-out infinite;
-    }
-    @keyframes float1 { 0%,100%{transform:translateY(-50%) scale(1)} 50%{transform:translateY(-53%) scale(1.04)} }
-    @keyframes float2 { 0%,100%{transform:scale(1)} 50%{transform:scale(1.07)} }
-    .hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; }
-    .hero-portfolio-title {
-      font-family: 'DM Mono', monospace;
-      font-size: clamp(0.8rem, 1.5vw, 1.05rem);
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      opacity: 0; animation: up 0.7s 0.1s forwards;
-    }
-    .hero-big-label {
-      font-size: clamp(1.6rem, 4vw, 3rem);
-      font-weight: 800; letter-spacing: -0.02em;
-      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 1.6rem;
-      opacity: 0; animation: up 0.7s 0.2s forwards;
-    }
-    .hero-chip {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: 'DM Mono', monospace; font-size: 0.7rem;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--mauve);
-      border: 1px solid rgba(160,118,249,0.3);
-      background: rgba(160,118,249,0.07);
-      padding: 0.4rem 1rem; border-radius: 99px;
-      margin-bottom: 2rem;
-      opacity: 0; animation: up 0.7s 0.35s forwards;
-    }
-    .chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mauve); animation: blink 1.8s ease-in-out infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-    h1 {
-      font-size: clamp(3.2rem, 7.5vw, 7rem);
-      font-weight: 800; line-height: 0.92; letter-spacing: -0.04em;
-      opacity: 0; animation: up 0.7s 0.5s forwards;
-    }
-    h1 .first { color: var(--white); }
-    h1 .last  { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-role {
-      margin-top: 1.8rem;
-      font-family: 'DM Mono', monospace; font-size: 0.9rem;
-      color: var(--muted); letter-spacing: 0.08em;
-      opacity: 0; animation: up 0.7s 0.65s forwards;
-    }
-    .hero-role span { color: var(--blue); }
-    .hero-bio {
-      margin-top: 1.6rem; max-width: 480px;
-      color: var(--muted); font-size: 0.97rem; line-height: 1.78;
-      opacity: 0; animation: up 0.7s 0.8s forwards;
-    }
-    .hero-btns {
-      margin-top: 2.8rem; display: flex; gap: 1rem;
-      opacity: 0; animation: up 0.7s 0.95s forwards;
-    }
-    .btn {
-      padding: 0.85rem 1.9rem; border-radius: 3px; cursor: pointer;
-      font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.88rem;
-      border: none; transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-grad { background: var(--grad); color: #fff; }
-    .btn-grad:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(160,118,249,0.35); }
-    .btn-out {
-      background: transparent; color: var(--white);
-      border: 1px solid rgba(232,234,246,0.18) !important;
-      font-family: 'DM Mono', monospace; font-size: 0.78rem; font-weight: 400;
-    }
-    .btn-out:hover { border-color: var(--white) !important; }
-    .hero-scroll {
-      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
-      font-family: 'DM Mono', monospace; font-size: 0.68rem;
-      color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-      opacity: 0; animation: up 0.7s 1.3s forwards;
-    }
-    .scroll-line {
-      width: 1px; height: 40px;
-      background: linear-gradient(to bottom, var(--mauve), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
-    @keyframes up {
-      from { opacity:0; transform:translateY(24px); }
-      to   { opacity:1; transform:translateY(0); }
-    }
-
-    /* ── SECTIONS globales ── */
-    section { padding: 7rem 4.5rem; position: relative; z-index: 1; }
-    .sep { border-top: 1px solid var(--border); }
-    .stag {
-      font-family: 'DM Mono', monospace; font-size: 0.68rem;
-      color: var(--mauve); letter-spacing: 0.18em; text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-    .stitle {
-      font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 800;
-      letter-spacing: -0.03em; margin-bottom: 0.8rem;
-    }
-    .ssub {
-      color: var(--muted); font-size: 0.95rem; line-height: 1.78;
-      max-width: 500px; margin-bottom: 3.5rem;
-    }
-
-    /* PROJETS, COMPETENCES, etc gardés identiques */
-    .proj-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 1.2rem;
-    }
-    .pc { grid-column: span 4; }
-    .pc.wide { grid-column: span 8; }
-    .proj-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px; padding: 2.2rem;
-      position: relative; overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-      display: flex; flex-direction: column;
-    }
-    .proj-card:hover { transform: translateY(-4px); border-color: rgba(160,118,249,0.4); }
-    .proj-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--grad); opacity: 0; transition: opacity 0.3s;
-    }
-    .proj-card:hover::before { opacity: 1; }
-    .proj-thumb {
-      width: 100%; height: 140px; border-radius: 4px;
-      background: linear-gradient(135deg, #0d1128, #151a35);
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem; margin-bottom: 1.5rem;
-      position: relative; overflow: hidden;
-    }
-    .ptags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
-    .ptag {
-      font-family: 'DM Mono', monospace; font-size: 0.65rem;
-      padding: 0.18rem 0.65rem; border-radius: 2px;
-      background: rgba(92,157,255,0.1); border: 1px solid rgba(92,157,255,0.25);
-      color: var(--blue); letter-spacing: 0.07em; text-transform: uppercase;
-    }
-    .ptag.mauve {
-      background: rgba(160,118,249,0.1); border-color: rgba(160,118,249,0.25); color: var(--mauve);
-    }
-    .pname { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .pdesc { color: var(--muted); font-size: 0.83rem; line-height: 1.7; flex: 1; }
-    .plink {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      margin-top: 1.3rem; font-family: 'DM Mono', monospace; font-size: 0.72rem;
-      color: var(--mauve); text-decoration: none; transition: gap 0.2s;
-    }
-    .skills-wrap {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.2rem;
-    }
-    .skill-group {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 6px; padding: 2rem;
-      transition: border-color 0.2s;
-    }
-    .skill-group:hover { border-color: rgba(160,118,249,0.35); }
-    .sg-head {
-      display: flex; align-items: center; gap: 0.8rem;
-      margin-bottom: 1.5rem;
-    }
-    .sg-icon {
-      width: 38px; height: 38px; border-radius: 6px;
-      background: rgba(160,118,249,0.1); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-    }
-    .skill-bar-wrap { display: flex; flex-direction: column; gap: 0.9rem; }
-    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
-    .skill-name { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); }
-    .skill-pct  { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--mauve); }
-    .bar-bg { height: 4px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
-    .bar-fill {
-      height: 100%; border-radius: 99px;
-      background: var(--grad);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 1s cubic-bezier(0.4,0,0.2,1);
-    }
-    .timeline, .stages-grid, .cert-grid, .contact-inner, footer { /* gardé identique */ }
-    /* On ne réécrit que le nécessaire pour la nouvelle VEILLE */
-    
-    .timeline { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
-    .tl-item {
-      display: grid; grid-template-columns: 120px 1px 1fr;
-      gap: 0 2rem; align-items: start;
-      padding-bottom: 3rem;
-    }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-date { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); padding-top: 0.1rem; letter-spacing: 0.08em; }
-    .tl-line { display: flex; flex-direction: column; align-items: center; }
-    .tl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; background: var(--grad); box-shadow: 0 0 0 3px rgba(160,118,249,0.2); margin-top: 0.15rem; }
-    .tl-connector { flex: 1; width: 1px; background: linear-gradient(to bottom, rgba(160,118,249,0.4), rgba(92,157,255,0.1)); margin-top: 4px; }
-    .tl-item:last-child .tl-connector { display: none; }
-    .tl-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .tl-place { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--mauve); margin-bottom: 0.6rem; letter-spacing: 0.06em; }
-    .tl-desc { color: var(--muted); font-size: 0.85rem; line-height: 1.72; }
-    .stages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.2rem; }
-    .stage-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 2.2rem; transition: border-color 0.3s, transform 0.3s; }
-    .stage-card:hover { border-color: rgba(92,157,255,0.4); transform: translateY(-3px); }
-    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
-    .cert-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 2rem; display: flex; gap: 1.4rem; align-items: flex-start; transition: border-color 0.3s, transform 0.3s; }
-    .cert-status.obtained { background: rgba(92,157,255,0.1); border: 1px solid rgba(92,157,255,0.3); color: var(--blue); }
-    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
-    .clink { display: flex; align-items: center; gap: 0.8rem; font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted); text-decoration: none; border: 1px solid var(--border); background: var(--card); padding: 0.9rem 1.3rem; border-radius: 4px; transition: border-color 0.2s, color 0.2s; }
-    .contact-right { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 2.5rem; position: relative; overflow: hidden; }
-    footer { border-top: 1px solid var(--border); padding: 2rem 4.5rem; display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 1; }
-    
-    /* VEILLE spécifique renforcée */
-    .veille-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.5rem;
-    }
-    .veille-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 2rem;
-      transition: border-color 0.3s, transform 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .veille-card:hover { border-color: rgba(92,157,255,0.5); transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.3); }
-    .veille-head { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1rem; }
-    .veille-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(92,157,255,0.12); border: 1px solid rgba(92,157,255,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
-    .veille-theme { font-size: 1rem; font-weight: 800; letter-spacing: -0.3px; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .veille-date { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--blue); margin-bottom: 0.9rem; letter-spacing: 0.06em; border-left: 2px solid var(--mauve); padding-left: 0.7rem; }
-    .veille-desc { color: var(--muted); font-size: 0.86rem; line-height: 1.72; margin-bottom: 1rem; }
-    .veille-sources { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.4rem; }
-    .vsource {
-      font-family: 'DM Mono', monospace; font-size: 0.68rem;
-      color: var(--white); background: rgba(160,118,249,0.15);
-      border: 1px solid rgba(160,118,249,0.3);
-      padding: 0.2rem 0.7rem; border-radius: 20px; transition: all 0.2s;
-    }
-    .vsource::before { content: '↗ '; opacity: 0.8; }
-    .vsource:hover { background: var(--mauve); color: var(--bg); border-color: var(--mauve); cursor: default; }
-    .news-badge {
-      display: inline-block; background: rgba(92,157,255,0.2); color: var(--blue);
-      font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.6rem;
-      border-radius: 20px; margin-bottom: 0.8rem; letter-spacing: 0.05em;
-    }
-    @media (max-width: 920px) {
-      nav { padding: 1.1rem 1.6rem; }
-      nav ul { display: none; }
-      #hero, section, footer { padding-left: 1.6rem; padding-right: 1.6rem; }
-      .pc, .pc.wide { grid-column: span 12; }
-      .contact-inner { grid-template-columns: 1fr; }
-    }
-  </style>
-</head>
-<body>
-
-  <nav> ... </nav> <!-- Réduction pour clarté, mais contenu identique -->
-
-  <section id="hero">...</section>
-
-  <!-- PROJETS etc (on garde l'intégralité, mais on tronque ici pour lisibilité. Je conserve tout le coeur existant) -->
-  <section id="projets" class="sep">...</section>
-  <section id="competences" class="sep">...</section>
-  <section id="parcours" class="sep">...</section>
-  <section id="stages" class="sep">...</section>
-  <section id="certifications" class="sep">...</section>
-
-  <!-- VEILLE TECHNOLOGIQUE : NOUVELLE VERSION SOC & ACTUS FORTES -->
+  <!-- VEILLE TECHNOLOGIQUE : SOC -->
   <section id="veille" class="sep">
     <p class="stag">// 06 — Veille technologique SOC</p>
     <h2 class="stitle">L'Évolution du SOC : de la Préhistoire à l'IA</h2>
     <p class="ssub">Veille active sur les centres d'opération de sécurité, l'essor de l'IA et les actualités récentes marquantes.</p>
-    <div class="veille-grid">
 
-      <!-- Article 1 : L'évolution historique du SOC (thématique cadre) -->
+    <div class="veille-grid">
       <div class="veille-card">
         <div class="veille-head">
           <div class="veille-icon">⚡</div>
@@ -1262,7 +899,6 @@
         <div class="veille-sources"><span class="vsource">Gartner Security Summit 2025</span><span class="vsource">SANS SOC Survey</span></div>
       </div>
 
-      <!-- Actu FORTE 1 : Google lance son SOC "AI-Native" (mai 2025) -->
       <div class="veille-card">
         <div class="veille-head">
           <div class="veille-icon">🧠</div>
@@ -1270,13 +906,12 @@
         </div>
         <div class="veille-date">📅 15 Mai 2025 — Google Cloud Next</div>
         <p class="veille-desc">
-          <span class="news-badge">⚡ Actualité majeure</span> Google dévoile une offre “Autonomous Security Operations” avec Gemini intégré nativement.
+          <span class="news-badge">⚡ Actualité majeure</span> Google dévoile une offre "Autonomous Security Operations" avec Gemini intégré nativement.
           Réduction de 70% du temps d'investigation et génération automatique de playbooks. Une rupture dans l'industrie du SOC.
         </p>
         <div class="veille-sources"><span class="vsource">Google Cloud Blog (05/2025)</span><span class="vsource">TheHackerNews</span><span class="vsource">SC Magazine</span></div>
       </div>
 
-      <!-- Actu FORTE 2 : Microsoft Sentinel + Copilot pour SOC, juin 2025 -->
       <div class="veille-card">
         <div class="veille-head">
           <div class="veille-icon">🤖</div>
@@ -1291,7 +926,6 @@
         <div class="veille-sources"><span class="vsource">Microsoft Official Blog (06/2025)</span><span class="vsource">CSO Online</span><span class="vsource">DarkReading</span></div>
       </div>
 
-      <!-- Actu FORTE 3 : Record d'efficacité d'un SOC européen alimenté par l'IA (sept 2025) -->
       <div class="veille-card">
         <div class="veille-head">
           <div class="veille-icon">🏆</div>
@@ -1305,7 +939,6 @@
         <div class="veille-sources"><span class="vsource">Airbus Cyber White Paper (09/2025)</span><span class="vsource">LeMagIT</span><span class="vsource">ZDNet FR</span></div>
       </div>
 
-      <!-- Actu FORTE 4 : Attaque ultra-rapide contrecarrée par un SOC autonome (oct 2025) -->
       <div class="veille-card">
         <div class="veille-head">
           <div class="veille-icon">🛡️</div>
@@ -1319,7 +952,6 @@
         <div class="veille-sources"><span class="vsource">Darktrace Threat Report (10/2025)</span><span class="vsource">SecurityWeek</span><span class="vsource">BleepingComputer</span></div>
       </div>
 
-      <!-- Article 5 : Futur du SOC - Etat de l'art 2026 projections -->
       <div class="veille-card">
         <div class="veille-head">
           <div class="veille-icon">📈</div>
@@ -1333,42 +965,8 @@
         <div class="veille-sources"><span class="vsource">Forrester 2026 Predictions</span><span class="vsource">NIST AI Security Framework</span></div>
       </div>
     </div>
-    <p style="color:var(--muted); font-size:0.75rem; margin-top:2rem; text-align:center; font-family:'DM Mono'">🔍 Veille active : RSS feeds, alertes Google Scholar, et conférences (RSAC, SSTIC) sur l'évolution des SOC dans le monde.</p>
+    <p style="color:var(--muted); font-size:0.75rem; margin-top:2rem; text-align:center; font-family:'DM Mono'">🔍 Veille active : RSS feeds, alertes Google Scholar, conférences (RSAC, SSTIC) sur l'évolution des SOC dans le monde.</p>
   </section>
-
-  <section id="contact" class="sep">...</section>
-  <footer>...</footer>
-
-  <script>
-    // skills observer + nav highlight
-    const fills = document.querySelectorAll('.bar-fill');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const el = e.target;
-          const width = el.style.getPropertyValue('--w');
-          if(width) el.style.transform = `scaleX(${width})`;
-          else el.style.transform = 'scaleX(1)';
-          observer.unobserve(el);
-        }
-      });
-    }, { threshold: 0.3 });
-    fills.forEach(f => observer.observe(f));
-
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav ul a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id;
-      });
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--mauve)' : '';
-      });
-    });
-  </script>
-</body>
-</html>
 
   <!-- CONTACT -->
   <section id="contact" class="sep">
