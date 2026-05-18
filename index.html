@@ -17,6 +17,8 @@
       --muted:   #6b7094;
       --border:  rgba(160,118,249,0.15);
       --card:    #0e1020;
+      --cyan:    #00f0ff;
+      --pink:    #ff00aa;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,7 +38,74 @@
       opacity: 0.8;
     }
 
-    /* ── NAV (ajout des liens Loisirs et CV) ── */
+    /* ── ANIMATION CYBERPUNK (dans le hero) ── */
+    .cyber-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .matrix-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.15;
+    }
+    .matrix-lines span {
+      position: absolute;
+      top: -100px;
+      color: var(--cyan);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      opacity: 0;
+      white-space: nowrap;
+      animation: fallDown linear infinite;
+    }
+    @keyframes fallDown {
+      0% { transform: translateY(-100px); opacity: 0; }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
+    }
+    .glitch-text {
+      position: absolute;
+      bottom: 20%;
+      right: 5%;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--cyan);
+      opacity: 0.6;
+      letter-spacing: 0.2em;
+      z-index: 3;
+      animation: glitchPulse 2s ease-in-out infinite;
+    }
+    @keyframes glitchPulse {
+      0%,100% { opacity: 0.4; text-shadow: 2px 0 var(--pink), -2px 0 var(--cyan); }
+      50% { opacity: 1; text-shadow: -2px 0 var(--pink), 2px 0 var(--cyan); }
+    }
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(0,240,255,0.03) 50%, transparent 100%);
+      animation: scan 8s linear infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       display: flex; align-items: center; justify-content: space-between;
@@ -66,7 +135,7 @@
     }
     .nav-btn:hover { background: var(--mauve) !important; color: var(--bg) !important; }
 
-    /* ── HERO (inchangé) ── */
+    /* ── HERO ── */
     #hero {
       position: relative; min-height: 100vh;
       display: flex; align-items: center;
@@ -98,7 +167,7 @@
     @keyframes float1 { 0%,100%{transform:translateY(-50%) scale(1)} 50%{transform:translateY(-53%) scale(1.04)} }
     @keyframes float2 { 0%,100%{transform:scale(1)} 50%{transform:scale(1.07)} }
 
-    .hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; }
+    .hero-inner { position: relative; z-index: 10; display: flex; flex-direction: column; }
 
     .hero-portfolio-title {
       font-family: 'DM Mono', monospace;
@@ -177,6 +246,7 @@
       color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
       display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
       opacity: 0; animation: up 0.7s 1.3s forwards;
+      z-index: 10;
     }
     .scroll-line {
       width: 1px; height: 40px;
@@ -433,7 +503,7 @@
       background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--muted);
     }
 
-    /* ── VEILLE TECHNOLOGIQUE SOC ── */
+    /* ── VEILLE TECHNOLOGIQUE SOC (avec cours d'histoire) ── */
     .veille-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -482,52 +552,40 @@
       font-family: 'DM Mono', monospace; font-size: 0.6rem; padding: 0.2rem 0.6rem;
       border-radius: 20px; margin-bottom: 0.8rem; letter-spacing: 0.05em;
     }
+    .history-card {
+      grid-column: span 2;
+      background: linear-gradient(135deg, rgba(16,18,40,0.95), rgba(10,12,30,0.98));
+      border: 1px solid var(--border);
+    }
+    .timeline-soc {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .soc-era {
+      display: flex;
+      gap: 1rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px dashed rgba(160,118,249,0.2);
+    }
+    .soc-era-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--cyan);
+      font-weight: bold;
+      min-width: 70px;
+    }
+    .soc-era-desc {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .soc-era-desc strong {
+      color: var(--white);
+    }
 
-    /* ── CONTACT ── */
-    .contact-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
-    }
-    .contact-left .stitle { margin-bottom: 1rem; }
-    .contact-left p { color: var(--muted); font-size: 0.95rem; line-height: 1.78; margin-bottom: 2rem; }
-    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
-    .clink {
-      display: flex; align-items: center; gap: 0.8rem;
-      font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted);
-      text-decoration: none; border: 1px solid var(--border);
-      background: var(--card); padding: 0.9rem 1.3rem; border-radius: 4px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .clink:hover { border-color: var(--mauve); color: var(--white); }
-    .clink-icon {
-      width: 30px; height: 30px; border-radius: 4px;
-      background: rgba(160,118,249,0.1); display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; flex-shrink: 0;
-    }
-
-    .contact-right {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 6px; padding: 2.5rem;
-      position: relative; overflow: hidden;
-    }
-    .contact-right::before {
-      content: ''; position: absolute; top: -60px; right: -60px;
-      width: 200px; height: 200px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(160,118,249,0.15) 0%, transparent 65%);
-    }
-    .contact-right h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .contact-right p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.8rem; line-height: 1.7; }
-    .cform { display: flex; flex-direction: column; gap: 1rem; }
-    .cform input, .cform textarea {
-      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-      border-radius: 3px; padding: 0.85rem 1rem;
-      color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.88rem;
-      outline: none; resize: none; transition: border-color 0.2s;
-    }
-    .cform input:focus, .cform textarea:focus { border-color: var(--mauve); }
-    .cform input::placeholder, .cform textarea::placeholder { color: var(--muted); }
-    .cform textarea { min-height: 110px; }
-
-    /* ── LOISIRS (Call of Duty + Roblox) ── */
+    /* ── LOISIRS ── */
     .loisirs-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -669,6 +727,50 @@
       box-shadow: 0 10px 25px rgba(160,118,249,0.4);
     }
 
+    /* ── CONTACT ── */
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    }
+    .contact-left .stitle { margin-bottom: 1rem; }
+    .contact-left p { color: var(--muted); font-size: 0.95rem; line-height: 1.78; margin-bottom: 2rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.8rem; }
+    .clink {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-family: 'DM Mono', monospace; font-size: 0.78rem; color: var(--muted);
+      text-decoration: none; border: 1px solid var(--border);
+      background: var(--card); padding: 0.9rem 1.3rem; border-radius: 4px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .clink:hover { border-color: var(--mauve); color: var(--white); }
+    .clink-icon {
+      width: 30px; height: 30px; border-radius: 4px;
+      background: rgba(160,118,249,0.1); display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+
+    .contact-right {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 6px; padding: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .contact-right::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(160,118,249,0.15) 0%, transparent 65%);
+    }
+    .contact-right h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .contact-right p { color: var(--muted); font-size: 0.85rem; margin-bottom: 1.8rem; line-height: 1.7; }
+    .cform { display: flex; flex-direction: column; gap: 1rem; }
+    .cform input, .cform textarea {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      border-radius: 3px; padding: 0.85rem 1rem;
+      color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.88rem;
+      outline: none; resize: none; transition: border-color 0.2s;
+    }
+    .cform input:focus, .cform textarea:focus { border-color: var(--mauve); }
+    .cform input::placeholder, .cform textarea::placeholder { color: var(--muted); }
+    .cform textarea { min-height: 110px; }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -697,6 +799,7 @@
       .contact-inner { grid-template-columns: 1fr; }
       .tl-item { grid-template-columns: 80px 1px 1fr; }
       .loisirs-grid { grid-template-columns: 1fr; }
+      .history-card { grid-column: span 1; }
     }
   </style>
 </head>
@@ -718,11 +821,18 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO avec animation cyberpunk -->
   <section id="hero">
     <div class="hgrid"></div>
     <div class="orb1"></div>
     <div class="orb2"></div>
+    
+    <!-- Animation cyberpunk -->
+    <div class="cyber-overlay">
+      <div class="matrix-lines" id="matrixLines"></div>
+      <div class="glitch-text">>_ SYSTEM READY // SOC MONITORING ACTIVE</div>
+      <div class="scan-line"></div>
+    </div>
 
     <div class="hero-inner">
       <div class="hero-portfolio-title">Portfolio</div>
@@ -1023,13 +1133,45 @@
     </div>
   </section>
 
-  <!-- VEILLE TECHNOLOGIQUE SOC -->
+  <!-- VEILLE TECHNOLOGIQUE SOC (avec mini-cours d'histoire) -->
   <section id="veille" class="sep">
     <p class="stag">// 06 — Veille technologique SOC</p>
     <h2 class="stitle">L'Évolution du SOC : de la Préhistoire à l'IA</h2>
     <p class="ssub">Veille active sur les centres d'opération de sécurité, l'essor de l'IA et les actualités récentes marquantes.</p>
 
     <div class="veille-grid">
+      <!-- CARTE COURS D'HISTOIRE (plus grande) -->
+      <div class="veille-card history-card">
+        <div class="veille-head">
+          <div class="veille-icon">📜</div>
+          <div class="veille-theme">Mini-Cours : Histoire du SOC</div>
+        </div>
+        <div class="veille-date">🎓 Leçon rapide — De 1990 à nos jours</div>
+        <div class="timeline-soc">
+          <div class="soc-era">
+            <div class="soc-era-year">1990 - 2000</div>
+            <div class="soc-era-desc"><strong>⚫ L'ère préhistorique</strong> — Les premiers SOC apparaissent dans les banques et les institutions militaires. Surveillance manuelle des logs, corrélation basique. Naissance des premiers SIEM rudimentaires.</div>
+          </div>
+          <div class="soc-era">
+            <div class="soc-era-year">2000 - 2010</div>
+            <div class="soc-era-desc"><strong>🔵 La professionnalisation</strong> — Généralisation des SOC dans les grandes entreprises. Apparition des premiers CERT (Computer Emergency Response Teams). Les analystes passent leurs nuits à surveiller des alertes.</div>
+          </div>
+          <div class="soc-era">
+            <div class="soc-era-year">2010 - 2020</div>
+            <div class="soc-era-desc"><strong>🟣 L'ère du Big Data</strong> — Explosion des volumes de données. Les SOC adoptent les SIEM nouvelle génération (Splunk, QRadar). Automatisation des tâches répétitives. Naissance du SOAR.</div>
+          </div>
+          <div class="soc-era">
+            <div class="soc-era-year">2020 - 2025</div>
+            <div class="soc-era-desc"><strong>🟢 L'IA entre en jeu</strong> — Machine Learning pour la détection d'anomalies. Réduction drastique des faux positifs. Les SOC deviennent prédictifs plutôt que réactifs.</div>
+          </div>
+          <div class="soc-era">
+            <div class="soc-era-year">2025 →</div>
+            <div class="soc-era-desc"><strong>✨ Le SOC augmenté</strong> — IA générative, SOC autonomes, investigation en langage naturel. Le SOC du futur est hybride : humain + IA collaborent en temps réel.</div>
+          </div>
+        </div>
+        <p style="margin-top:1rem; font-size:0.75rem; color:var(--cyan); font-family:'DM Mono'">💡 Le SOC moderne n'est plus une tour d'ivoire — c'est un centre névralgique où la sécurité se pilote en temps réel.</p>
+      </div>
+
       <div class="veille-card">
         <div class="veille-head">
           <div class="veille-icon">⚡</div>
@@ -1113,20 +1255,19 @@
     <p style="color:var(--muted); font-size:0.75rem; margin-top:2rem; text-align:center; font-family:'DM Mono'">🔍 Veille active : RSS feeds, alertes Google Scholar, conférences (RSAC, SSTIC) sur l'évolution des SOC dans le monde.</p>
   </section>
 
-  <!-- LOISIRS : Call of Duty + Roblox -->
+  <!-- LOISIRS -->
   <section id="loisirs" class="sep">
     <p class="stag">// 07 — Loisirs & Passion</p>
     <h2 class="stitle">Mon univers gaming</h2>
     <p class="ssub">Entre immersion militaire et créativité débridée, voici ce qui me motive hors des lignes de code.</p>
 
     <div class="loisirs-grid">
-      <!-- Call of Duty -->
       <div class="loisir-card">
         <div class="loisir-icon">🎯</div>
         <div class="loisir-title">CALL OF DUTY</div>
         <div class="loisir-sub">Modern Warfare • Black Ops • Warzone</div>
         <p class="loisir-desc">
-          Stratégie, réflexes et travail d'équipe. Le franchise Call of Duty m'apprend la réactivité,
+          Stratégie, réflexes et travail d'équipe. La franchise Call of Duty m'apprend la réactivité,
           la coordination sous pression et l'analyse rapide des situations — des compétences utiles aussi en cybersécurité !
         </p>
         <div class="loisir-stats">
@@ -1137,7 +1278,6 @@
         <div class="badge-game">🔫 Tactique • Réactivité • Teamplay</div>
       </div>
 
-      <!-- Roblox -->
       <div class="loisir-card">
         <div class="loisir-icon">🧱</div>
         <div class="loisir-title">ROBLOX</div>
@@ -1155,10 +1295,9 @@
         <div class="badge-game">🎨 Créatif • Code • Imagination</div>
       </div>
     </div>
-    <p style="color:var(--muted); font-size:0.75rem; margin-top:2rem; text-align:center; font-family:'DM Mono'">⚡ Du plaisir, du défi, et des compétences transférables dans le monde IT.</p>
   </section>
 
-  <!-- CV : Espace avec lien -->
+  <!-- CV -->
   <section id="cv" class="sep">
     <p class="stag">// 08 — CV</p>
     <div class="cv-section">
@@ -1218,20 +1357,27 @@
   </footer>
 
   <script>
-    // Animation des barres (plus utilisées, mais on garde)
-    const fills = document.querySelectorAll('.bar-fill');
-    if(fills.length > 0) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            const el = e.target;
-            el.style.transform = `scaleX(${el.style.getPropertyValue('--w')})`;
-            observer.unobserve(el);
-          }
-        });
-      }, { threshold: 0.3 });
-      fills.forEach(f => observer.observe(f));
+    // Animation des lignes de code cyberpunk
+    function createMatrixLines() {
+      const container = document.getElementById('matrixLines');
+      if(!container) return;
+      const characters = '01><[]{}();:/*-+%=#@!~';
+      for(let i = 0; i < 40; i++) {
+        const span = document.createElement('span');
+        const length = Math.floor(Math.random() * 20) + 10;
+        let text = '';
+        for(let j = 0; j < length; j++) {
+          text += characters[Math.floor(Math.random() * characters.length)];
+        }
+        span.textContent = text;
+        span.style.left = Math.random() * 100 + '%';
+        span.style.animationDuration = Math.random() * 5 + 3 + 's';
+        span.style.animationDelay = Math.random() * 10 + 's';
+        span.style.fontSize = (Math.random() * 0.8 + 0.6) + 'rem';
+        container.appendChild(span);
+      }
     }
+    createMatrixLines();
 
     // Active nav link highlight on scroll
     const sections = document.querySelectorAll('section[id]');
@@ -1250,11 +1396,10 @@
       });
     });
 
-    // Gestion du lien CV (à modifier par l'utilisateur)
+    // Gestion du lien CV
     const cvLink = document.getElementById('cvLink');
     if(cvLink) {
-      // À remplacer par le vrai lien vers ton CV
-      cvLink.href = "#";  // ← Mets ici le lien vers ton CV (fichier local ou drive)
+      cvLink.href = "#";
       cvLink.addEventListener('click', (e) => {
         if(cvLink.href === "#" || cvLink.href === window.location.href + "#") {
           e.preventDefault();
