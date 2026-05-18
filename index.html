@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TAIRIO Yoran • BTS SIO SISR • Portfolio Futuriste</title>
+  <title>TAIRIO Yoran — BTS SIO SISR | SOC & Cybersécurité</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -22,12 +22,9 @@
       --primary: #3b82f6;
       --primary-dark: #2563eb;
       --accent: #8b5cf6;
-      --accent-glow: rgba(139, 92, 246, 0.25);
       --border: rgba(0, 0, 0, 0.06);
       --card-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
       --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      --water: #00d4ff;
-      --flame: #ff6b35;
     }
 
     body {
@@ -74,144 +71,6 @@
       pointer-events: none;
       z-index: 9997;
       opacity: 0;
-    }
-
-    /* === DEMON SLAYER ANIMATION (tout en haut) === */
-    .demon-slayer-container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      background: linear-gradient(145deg, #0a0c1a 0%, #14182b 50%, #1a1f35 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      isolation: isolate;
-    }
-    .kanji {
-      position: absolute;
-      font-size: 12vw;
-      font-weight: 900;
-      color: rgba(0, 212, 255, 0.08);
-      font-family: 'Space Mono', monospace;
-      letter-spacing: 0.2em;
-      white-space: nowrap;
-      animation: floatKanji 20s ease-in-out infinite;
-      z-index: 1;
-    }
-    @keyframes floatKanji {
-      0%,100% { transform: translateY(0px) rotate(0deg); opacity: 0.08; }
-      50% { transform: translateY(-30px) rotate(2deg); opacity: 0.15; }
-    }
-    .water-wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 30%;
-      background: repeating-linear-gradient(transparent 0px, transparent 30px, rgba(0,212,255,0.08) 30px, rgba(0,212,255,0.12) 60px);
-      animation: waveMove 4s ease-in-out infinite;
-      z-index: 2;
-    }
-    @keyframes waveMove {
-      0%,100% { background-position: 0 0; }
-      50% { background-position: 0 20px; }
-    }
-    .breathing-effect {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,212,255,0.15) 0%, rgba(139,92,246,0.1) 50%, transparent 70%);
-      animation: breathPulse 6s ease-in-out infinite;
-      z-index: 1;
-    }
-    @keyframes breathPulse {
-      0%,100% { transform: scale(0.8); opacity: 0.3; }
-      50% { transform: scale(1.4); opacity: 0.6; }
-    }
-    .sun-breathing {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ffb34720, #ff6b3520, transparent);
-      animation: sunGlow 8s ease-in-out infinite;
-      filter: blur(30px);
-    }
-    @keyframes sunGlow {
-      0%,100% { transform: scale(1); opacity: 0.4; background: radial-gradient(circle, #ffb34720, #ff6b3520, transparent); }
-      50% { transform: scale(1.8); opacity: 0.8; background: radial-gradient(circle, #ff6b3540, #ffb34730, transparent); }
-    }
-    .water-splash {
-      position: absolute;
-      bottom: 5%;
-      left: 10%;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, rgba(0,212,255,0.2) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: splash 3s ease-in-out infinite;
-    }
-    @keyframes splash {
-      0%,100% { transform: scale(0.6); opacity: 0.3; }
-      50% { transform: scale(1.3); opacity: 0.7; }
-    }
-    .flame-effect {
-      position: absolute;
-      bottom: 10%;
-      right: 15%;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, #ff6b3580, #ffb34740, transparent);
-      border-radius: 50%;
-      filter: blur(20px);
-      animation: flameFlicker 1.5s ease-in-out infinite;
-    }
-    @keyframes flameFlicker {
-      0%,100% { transform: scale(0.9); opacity: 0.4; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-    }
-    .demon-slayer-title {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      color: white;
-      font-family: 'Space Mono', monospace;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-    }
-    .demon-slayer-title h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #00d4ff, #8b5cf6, #ff6b35);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: titleGlow 3s ease-in-out infinite;
-    }
-    @keyframes titleGlow {
-      0%,100% { filter: drop-shadow(0 0 5px #00d4ff); }
-      50% { filter: drop-shadow(0 0 20px #ff6b35); }
-    }
-    .demon-slayer-title p {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      margin-top: 1rem;
-    }
-    .scroll-down {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-size: 0.8rem;
-      z-index: 10;
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(10px); }
     }
 
     /* scrollbar */
@@ -276,7 +135,7 @@
       transform: translateY(-2px);
     }
 
-    /* hero section - NOUVELLE VERSION */
+    /* hero section */
     .hero-section {
       min-height: 100vh;
       display: flex;
@@ -297,7 +156,6 @@
       font-weight: 500;
       margin-bottom: 1.5rem;
     }
-    /* GROS TITRE "C'est mon portfolio" */
     .hero-main-title {
       font-size: 4rem;
       font-weight: 800;
@@ -312,7 +170,6 @@
       background-clip: text;
       color: transparent;
     }
-    /* Prénom Nom */
     .hero-name {
       font-size: 3.5rem;
       font-weight: 700;
@@ -320,7 +177,6 @@
       margin-bottom: 1.5rem;
       letter-spacing: -0.01em;
     }
-    /* Biographie détaillée */
     .hero-bio {
       font-size: 1.1rem;
       color: var(--text-muted);
@@ -778,22 +634,6 @@
   <div class="cursor"></div>
   <div class="cursor-trail"></div>
 
-  <!-- SECTION DEMON SLAYER (tout en haut) -->
-  <div class="demon-slayer-container">
-    <div class="kanji">⚔️ 水の呼吸 ⚔️</div>
-    <div class="breathing-effect"></div>
-    <div class="sun-breathing"></div>
-    <div class="water-wave"></div>
-    <div class="water-splash"></div>
-    <div class="flame-effect"></div>
-    <div class="demon-slayer-title">
-      <h2>✦ 竈門炭治郎 ✦</h2>
-      <p>「全集中 ── 水の呼吸」</p>
-      <p style="font-size:0.7rem; margin-top:0.5rem;">Sun Breathing • Water Flow • Eternal Determination</p>
-    </div>
-    <div class="scroll-down">▼ SCROLL ▼</div>
-  </div>
-
   <!-- NAVIGATION -->
   <nav>
     <div class="logo">YT.</div>
@@ -810,7 +650,7 @@
     </ul>
   </nav>
 
-  <!-- HERO TEXTE - NOUVELLE VERSION AVEC "C'est mon portfolio" -->
+  <!-- HERO TEXTE -->
   <div class="hero-section">
     <div class="hero-content">
       <div class="hero-badge">✨ Portfolio BTS SIO • Spé SISR</div>
@@ -830,34 +670,10 @@
   <section id="projets">
     <div class="section-header"><div class="section-tag">// 01 — Projets</div><h2 class="section-title">Mes réalisations</h2><div class="section-sub">Projets réalisés en cours, en TP et en autonomie dans le cadre de mon BTS SIO.</div></div>
     <div class="projets-grid">
-      <div class="projet-card">
-        <div class="projet-icon">🖧</div>
-        <div class="projet-tags"><span class="tag">Réseau</span><span class="tag tag-accent">Cisco Packet Tracer</span><span class="tag">VLAN</span></div>
-        <div class="projet-title">Architecture réseau d'entreprise</div>
-        <div class="projet-desc">Conception et simulation d'une infrastructure réseau complète pour une entreprise fictive : segmentation en VLANs, routage inter-VLAN, configuration DHCP, ACL et redondance avec HSRP. Réalisé sous Cisco Packet Tracer avec documentation technique complète.</div>
-        <a href="#" class="projet-link">Voir le projet →</a>
-      </div>
-      <div class="projet-card">
-        <div class="projet-icon">🔒</div>
-        <div class="projet-tags"><span class="tag tag-accent">Sécurité</span><span class="tag">Linux</span></div>
-        <div class="projet-title">Mise en place d'un pare-feu</div>
-        <div class="projet-desc">Installation et configuration d'un pare-feu en VM : règles de filtrage et monitoring des flux réseau (HIDS & IDS).</div>
-        <a href="#" class="projet-link">Voir le projet →</a>
-      </div>
-      <div class="projet-card">
-        <div class="projet-icon">🐧</div>
-        <div class="projet-tags"><span class="tag">Linux</span><span class="tag">Serveur</span></div>
-        <div class="projet-title">Administration serveur Proxmox</div>
-        <div class="projet-desc">Déploiement et administration d'un hyperviseur Proxmox : création de VMs, gestion des ressources et sauvegarde des environnements virtuels.</div>
-        <a href="#" class="projet-link">Voir le projet →</a>
-      </div>
-      <div class="projet-card">
-        <div class="projet-icon">📡</div>
-        <div class="projet-tags"><span class="tag">Supervision</span><span class="tag tag-accent">Zabbix</span></div>
-        <div class="projet-title">Supervision réseau avec Zabbix</div>
-        <div class="projet-desc">Mise en œuvre d'une solution de supervision réseau : installation Zabbix, ajout d'hôtes, création de triggers et tableaux de bord d'alertes en temps réel.</div>
-        <a href="#" class="projet-link">Voir le projet →</a>
-      </div>
+      <div class="projet-card"><div class="projet-icon">🖧</div><div class="projet-tags"><span class="tag">Réseau</span><span class="tag tag-accent">Cisco Packet Tracer</span><span class="tag">VLAN</span></div><div class="projet-title">Architecture réseau d'entreprise</div><div class="projet-desc">Conception et simulation d'une infrastructure réseau complète pour une entreprise fictive : segmentation en VLANs, routage inter-VLAN, configuration DHCP, ACL et redondance avec HSRP. Réalisé sous Cisco Packet Tracer avec documentation technique complète.</div><a href="#" class="projet-link">Voir le projet →</a></div>
+      <div class="projet-card"><div class="projet-icon">🔒</div><div class="projet-tags"><span class="tag tag-accent">Sécurité</span><span class="tag">Linux</span></div><div class="projet-title">Mise en place d'un pare-feu</div><div class="projet-desc">Installation et configuration d'un pare-feu en VM : règles de filtrage et monitoring des flux réseau (HIDS & IDS).</div><a href="#" class="projet-link">Voir le projet →</a></div>
+      <div class="projet-card"><div class="projet-icon">🐧</div><div class="projet-tags"><span class="tag">Linux</span><span class="tag">Serveur</span></div><div class="projet-title">Administration serveur Proxmox</div><div class="projet-desc">Déploiement et administration d'un hyperviseur Proxmox : création de VMs, gestion des ressources et sauvegarde des environnements virtuels.</div><a href="#" class="projet-link">Voir le projet →</a></div>
+      <div class="projet-card"><div class="projet-icon">📡</div><div class="projet-tags"><span class="tag">Supervision</span><span class="tag tag-accent">Zabbix</span></div><div class="projet-title">Supervision réseau avec Zabbix</div><div class="projet-desc">Mise en œuvre d'une solution de supervision réseau : installation Zabbix, ajout d'hôtes, création de triggers et tableaux de bord d'alertes en temps réel.</div><a href="#" class="projet-link">Voir le projet →</a></div>
     </div>
   </section>
 
@@ -945,9 +761,9 @@
   </section>
 
   <footer>
-    <div class="f-logo" style="font-weight:800; background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent;">TAIRIO Yoran</div>
+    <div style="font-weight:800; background:linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent;">TAIRIO Yoran</div>
     <p>© 2026 — BTS SIO SISR · Nouvelle-Calédonie</p>
-    <p>Fait avec ❤️ en HTML/CSS — 全集中 水の呼吸 ✨</p>
+    <p>Fait avec ❤️ en HTML/CSS — Portfolio futuriste</p>
   </footer>
 
   <script>
