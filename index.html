@@ -36,7 +36,7 @@
       opacity: 0.8;
     }
 
-    /* ── NAV ── */
+    /* ── NAV (ajout des liens Loisirs et CV) ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 999;
       display: flex; align-items: center; justify-content: space-between;
@@ -66,7 +66,7 @@
     }
     .nav-btn:hover { background: var(--mauve) !important; color: var(--bg) !important; }
 
-    /* ── HERO ── */
+    /* ── HERO (inchangé) ── */
     #hero {
       position: relative; min-height: 100vh;
       display: flex; align-items: center;
@@ -265,7 +265,7 @@
     }
     .plink:hover { gap: 0.8rem; }
 
-    /* ── COMPÉTENCES ── */
+    /* ── COMPÉTENCES (sans pourcentages) ── */
     .skills-wrap {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -288,18 +288,51 @@
     }
     .sg-name { font-size: 0.95rem; font-weight: 700; }
 
-    .skill-bar-wrap { display: flex; flex-direction: column; gap: 0.9rem; }
-    .skill-info { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
-    .skill-name { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); }
-    .skill-pct  { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--mauve); }
-    .bar-bg { height: 4px; background: rgba(255,255,255,0.06); border-radius: 99px; overflow: hidden; }
-    .bar-fill {
-      height: 100%; border-radius: 99px;
-      background: var(--grad);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 1s cubic-bezier(0.4,0,0.2,1);
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
     }
-    .bar-fill.animate { transform: scaleX(1); }
+    .skill-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.05);
+    }
+    .skill-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .skill-status {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      background: rgba(92,157,255,0.15);
+      color: var(--blue);
+      border: 1px solid rgba(92,157,255,0.3);
+    }
+    .skill-status.acquired {
+      background: rgba(92,157,255,0.2);
+      color: #7cb8ff;
+      border-color: rgba(92,157,255,0.5);
+    }
+    .skill-status.seen {
+      background: rgba(160,118,249,0.15);
+      color: var(--mauve);
+      border-color: rgba(160,118,249,0.3);
+    }
+    .skill-status.deep {
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      border-color: rgba(255,255,255,0.1);
+    }
 
     /* ── PARCOURS ── */
     .timeline { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
@@ -494,12 +527,157 @@
     .cform input::placeholder, .cform textarea::placeholder { color: var(--muted); }
     .cform textarea { min-height: 110px; }
 
+    /* ── LOISIRS (Call of Duty + Roblox) ── */
+    .loisirs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .loisir-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .loisir-card:hover { transform: translateY(-8px); border-color: rgba(160,118,249,0.5); }
+    .loisir-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--grad);
+    }
+    .loisir-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    .loisir-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .loisir-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--mauve);
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .loisir-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .loisir-stats {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--blue);
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .badge-game {
+      display: inline-block;
+      background: rgba(92,157,255,0.15);
+      border: 1px solid rgba(92,157,255,0.3);
+      border-radius: 99px;
+      padding: 0.3rem 1rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--blue);
+      margin-top: 1rem;
+    }
+
+    /* ── CV ── */
+    .cv-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cv-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--grad);
+    }
+    .cv-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .cv-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .cv-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .cv-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: var(--grad);
+      color: var(--bg);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 99px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 1rem;
+    }
+    .cv-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(160,118,249,0.4);
+    }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 4.5rem;
-      display: flex; align-items: center; justify-content: space-between;
-      position: relative; z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
     }
     .f-logo {
       font-weight: 800; font-size: 1rem;
@@ -518,6 +696,7 @@
       .pc, .pc.wide { grid-column: span 12; }
       .contact-inner { grid-template-columns: 1fr; }
       .tl-item { grid-template-columns: 80px 1px 1fr; }
+      .loisirs-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -533,6 +712,8 @@
       <li><a href="#stages">Stages</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="#veille">Veille</a></li>
+      <li><a href="#loisirs">Loisirs</a></li>
+      <li><a href="#cv">CV</a></li>
       <li><a href="#contact" class="nav-btn">Contact</a></li>
     </ul>
   </nav>
@@ -655,23 +836,11 @@
           <div class="sg-icon">🖧</div>
           <div class="sg-name">Réseaux</div>
         </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">TCP/IP — Routage</span><span class="skill-pct">80%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.80"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">VLAN / Switching</span><span class="skill-pct">75%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.75"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Cisco IOS / Packet Tracer</span><span class="skill-pct">70%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.70"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">VPN / Pare-feu</span><span class="skill-pct">65%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.65"></div></div>
-          </div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">TCP/IP — Routage</span><span class="skill-status acquired">✓ Acquis</span></div>
+          <div class="skill-item"><span class="skill-name">VLAN / Switching</span><span class="skill-status acquired">✓ Acquis</span></div>
+          <div class="skill-item"><span class="skill-name">Cisco IOS / Packet Tracer</span><span class="skill-status acquired">✓ Acquis</span></div>
+          <div class="skill-item"><span class="skill-name">VPN / Pare-feu</span><span class="skill-status seen">📖 Vu en cours</span></div>
         </div>
       </div>
 
@@ -680,23 +849,11 @@
           <div class="sg-icon">🐧</div>
           <div class="sg-name">Systèmes</div>
         </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Linux (Debian / Ubuntu)</span><span class="skill-pct">75%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.75"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Windows Server / AD</span><span class="skill-pct">65%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.65"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Virtualisation (Proxmox / VirtualBox)</span><span class="skill-pct">70%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.70"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Scripting Bash</span><span class="skill-pct">55%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.55"></div></div>
-          </div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">Linux (Debian / Ubuntu)</span><span class="skill-status acquired">✓ Acquis</span></div>
+          <div class="skill-item"><span class="skill-name">Windows Server / AD</span><span class="skill-status seen">📖 Vu en cours</span></div>
+          <div class="skill-item"><span class="skill-name">Virtualisation (Proxmox / VirtualBox)</span><span class="skill-status acquired">✓ Acquis</span></div>
+          <div class="skill-item"><span class="skill-name">Scripting Bash</span><span class="skill-status deep">🔄 En approfondissement</span></div>
         </div>
       </div>
 
@@ -705,23 +862,11 @@
           <div class="sg-icon">🔒</div>
           <div class="sg-name">Sécurité &amp; Outils</div>
         </div>
-        <div class="skill-bar-wrap">
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">pfSense / iptables</span><span class="skill-pct">65%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.65"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Wireshark / Nmap</span><span class="skill-pct">60%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.60"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">Zabbix / Supervision</span><span class="skill-pct">60%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.60"></div></div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-info"><span class="skill-name">HTML / CSS / bases web</span><span class="skill-pct">70%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="--w:0.70"></div></div>
-          </div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="skill-name">pfSense / iptables</span><span class="skill-status seen">📖 Vu en cours</span></div>
+          <div class="skill-item"><span class="skill-name">Wireshark / Nmap</span><span class="skill-status acquired">✓ Acquis</span></div>
+          <div class="skill-item"><span class="skill-name">Zabbix / Supervision</span><span class="skill-status seen">📖 Vu en cours</span></div>
+          <div class="skill-item"><span class="skill-name">HTML / CSS / bases web</span><span class="skill-status acquired">✓ Acquis</span></div>
         </div>
       </div>
     </div>
@@ -878,7 +1023,7 @@
     </div>
   </section>
 
-  <!-- VEILLE TECHNOLOGIQUE : SOC -->
+  <!-- VEILLE TECHNOLOGIQUE SOC -->
   <section id="veille" class="sep">
     <p class="stag">// 06 — Veille technologique SOC</p>
     <h2 class="stitle">L'Évolution du SOC : de la Préhistoire à l'IA</h2>
@@ -968,9 +1113,66 @@
     <p style="color:var(--muted); font-size:0.75rem; margin-top:2rem; text-align:center; font-family:'DM Mono'">🔍 Veille active : RSS feeds, alertes Google Scholar, conférences (RSAC, SSTIC) sur l'évolution des SOC dans le monde.</p>
   </section>
 
+  <!-- LOISIRS : Call of Duty + Roblox -->
+  <section id="loisirs" class="sep">
+    <p class="stag">// 07 — Loisirs & Passion</p>
+    <h2 class="stitle">Mon univers gaming</h2>
+    <p class="ssub">Entre immersion militaire et créativité débridée, voici ce qui me motive hors des lignes de code.</p>
+
+    <div class="loisirs-grid">
+      <!-- Call of Duty -->
+      <div class="loisir-card">
+        <div class="loisir-icon">🎯</div>
+        <div class="loisir-title">CALL OF DUTY</div>
+        <div class="loisir-sub">Modern Warfare • Black Ops • Warzone</div>
+        <p class="loisir-desc">
+          Stratégie, réflexes et travail d'équipe. Le franchise Call of Duty m'apprend la réactivité,
+          la coordination sous pression et l'analyse rapide des situations — des compétences utiles aussi en cybersécurité !
+        </p>
+        <div class="loisir-stats">
+          <div class="stat"><div class="stat-value">★ Prestige Master</div><div class="stat-label">MWIII</div></div>
+          <div class="stat"><div class="stat-value">Top 5%</div><div class="stat-label">KD Ratio Warzone</div></div>
+          <div class="stat"><div class="stat-value">Esport</div><div class="stat-label">Tournois entre amis</div></div>
+        </div>
+        <div class="badge-game">🔫 Tactique • Réactivité • Teamplay</div>
+      </div>
+
+      <!-- Roblox -->
+      <div class="loisir-card">
+        <div class="loisir-icon">🧱</div>
+        <div class="loisir-title">ROBLOX</div>
+        <div class="loisir-sub">Création • Développement • Communauté</div>
+        <p class="loisir-desc">
+          Bien plus qu'un jeu, Roblox est un terrain de jeu infini pour la créativité. J'y explore
+          la création de mini-jeux, le scripting Lua et la conception d'expériences immersives.
+          Un excellent laboratoire pour comprendre la mécanique des jeux en ligne.
+        </p>
+        <div class="loisir-stats">
+          <div class="stat"><div class="stat-value">500h+</div><div class="stat-label">Sur Roblox Studio</div></div>
+          <div class="stat"><div class="stat-value">Mini-jeux</div><div class="stat-label">Créés & partagés</div></div>
+          <div class="stat"><div class="stat-value">Dev</div><div class="stat-label">Scripting Lua</div></div>
+        </div>
+        <div class="badge-game">🎨 Créatif • Code • Imagination</div>
+      </div>
+    </div>
+    <p style="color:var(--muted); font-size:0.75rem; margin-top:2rem; text-align:center; font-family:'DM Mono'">⚡ Du plaisir, du défi, et des compétences transférables dans le monde IT.</p>
+  </section>
+
+  <!-- CV : Espace avec lien -->
+  <section id="cv" class="sep">
+    <p class="stag">// 08 — CV</p>
+    <div class="cv-section">
+      <div class="cv-icon">📄</div>
+      <div class="cv-title">Mon Curriculum Vitae</div>
+      <div class="cv-sub">Version la plus récente — à jour 2026</div>
+      <a href="#" class="cv-link" id="cvLink">📥 Télécharger mon CV →</a>
+      <p style="color:var(--muted); font-size:0.7rem; margin-top:1.5rem; font-family:'DM Mono'">Format PDF • Mis à jour régulièrement</p>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="sep">
-    <p class="stag">// 07 — Contact</p>
+    <p class="stag">// 09 — Contact</p>
     <div class="contact-inner">
       <div class="contact-left">
         <h2 class="stitle">Travaillons ensemble</h2>
@@ -1016,18 +1218,20 @@
   </footer>
 
   <script>
-    // Animate skill bars on scroll
+    // Animation des barres (plus utilisées, mais on garde)
     const fills = document.querySelectorAll('.bar-fill');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const el = e.target;
-          el.style.transform = `scaleX(${el.style.getPropertyValue('--w')})`;
-          observer.unobserve(el);
-        }
-      });
-    }, { threshold: 0.3 });
-    fills.forEach(f => observer.observe(f));
+    if(fills.length > 0) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            const el = e.target;
+            el.style.transform = `scaleX(${el.style.getPropertyValue('--w')})`;
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.3 });
+      fills.forEach(f => observer.observe(f));
+    }
 
     // Active nav link highlight on scroll
     const sections = document.querySelectorAll('section[id]');
@@ -1038,9 +1242,26 @@
         if (window.scrollY >= s.offsetTop - 120) current = s.id;
       });
       navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--mauve)' : '';
+        if (a.getAttribute('href') === '#' + current) {
+          a.style.color = 'var(--mauve)';
+        } else {
+          a.style.color = '';
+        }
       });
     });
+
+    // Gestion du lien CV (à modifier par l'utilisateur)
+    const cvLink = document.getElementById('cvLink');
+    if(cvLink) {
+      // À remplacer par le vrai lien vers ton CV
+      cvLink.href = "#";  // ← Mets ici le lien vers ton CV (fichier local ou drive)
+      cvLink.addEventListener('click', (e) => {
+        if(cvLink.href === "#" || cvLink.href === window.location.href + "#") {
+          e.preventDefault();
+          alert("🔗 Remplace le lien '#', par le vrai lien vers ton CV (fichier PDF local ou en ligne)");
+        }
+      });
+    }
   </script>
 
 </body>
