@@ -503,11 +503,11 @@
     .soc-era-year { font-weight: 700; color: var(--primary); min-width: 90px; font-size: 0.85rem; }
     .soc-era-desc { font-size: 0.85rem; color: var(--text-muted); }
 
-    /* loisirs */
+    /* LOISIRS - Version Interactive & Vivante */
     .loisirs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.8rem;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
     }
     .loisir-card {
       background: var(--surface);
@@ -515,30 +515,126 @@
       padding: 2rem;
       text-align: center;
       box-shadow: var(--card-shadow);
-      transition: var(--transition);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--border);
+      cursor: default;
     }
-    .loisir-card:hover {
+    .interactive-card:hover {
       transform: translateY(-8px);
+      box-shadow: 0 25px 40px -16px rgba(0, 0, 0, 0.25);
       border-color: var(--primary);
     }
-    .loisir-icon { font-size: 3.5rem; margin-bottom: 1rem; }
-    .loisir-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .loisir-sub { font-size: 0.75rem; color: var(--primary); margin-bottom: 1rem; letter-spacing: 0.5px; }
-    .loisir-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.2rem; }
-    .loisir-stats { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
-    .stat { text-align: center; }
-    .stat-value { font-size: 1.2rem; font-weight: 800; color: var(--primary); }
-    .stat-label { font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase; }
+    .loisir-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .interactive-card:hover .loisir-icon {
+      transform: scale(1.1);
+    }
+    .loisir-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .loisir-sub {
+      font-size: 0.75rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+    .loisir-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .loisir-stats {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .stat {
+      text-align: center;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .stat:hover {
+      transform: translateY(-3px);
+    }
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .stat-label {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .skill-bars-container {
+      margin: 1.2rem 0;
+      border-top: 1px dashed var(--border);
+      padding-top: 1rem;
+    }
+    .skill-bar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      font-size: 0.75rem;
+    }
+    .skill-bar-item span:first-child {
+      min-width: 105px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .bar-bg {
+      flex: 1;
+      height: 6px;
+      background: var(--surface-2);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 99px;
+      transition: width 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .blood-fill { background: linear-gradient(90deg, #E24B4A, #A32D2D); }
+    .roblox-fill { background: linear-gradient(90deg, #378ADD, #534AB7); }
+    .skill-bar-item .percent {
+      min-width: 35px;
+      text-align: right;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: 'Space Mono', monospace;
+      font-weight: 600;
+    }
     .badge-game {
       display: inline-block;
-      background: rgba(59,130,246,0.1);
-      border: 1px solid rgba(59,130,246,0.2);
+      background: var(--surface-2);
       border-radius: 99px;
-      padding: 0.3rem 1rem;
+      padding: 0.4rem 1rem;
       font-size: 0.7rem;
-      color: var(--primary);
+      color: var(--text-muted);
       margin-top: 1rem;
+      transition: all 0.2s ease;
     }
+    .badge-game:hover {
+      transform: scale(1.02);
+    }
+    .blood-badge { background: rgba(226, 75, 74, 0.1); color: #A32D2D; }
+    .roblox-badge { background: rgba(55, 138, 221, 0.1); color: #185FA5; }
 
     /* cv & contact */
     .cv-block {
@@ -626,6 +722,8 @@
       .hero-name { font-size: 2rem; }
       .contact-grid { grid-template-columns: 1fr; }
       .history-card { grid-column: span 1; }
+      .loisirs-grid { grid-template-columns: 1fr; }
+      .skill-bar-item span:first-child { min-width: 85px; }
     }
   </style>
 </head>
@@ -677,7 +775,7 @@
     </div>
   </section>
 
-<!-- COMPÉTENCES -->
+  <!-- COMPÉTENCES -->
   <section id="competences">
     <div class="section-header"><div class="section-tag">// 02 — Compétences</div><h2 class="section-title">Ce que je maîtrise</h2><div class="section-sub">Des compétences acquises en cours, en TP et par la pratique personnelle.</div></div>
     <div class="skills-grid">
@@ -732,12 +830,52 @@
     <p style="color:var(--text-muted); margin-top:2rem; text-align:center; font-family:'Space Mono'; font-size:0.75rem;">🔍 Veille active : RSS feeds, alertes Google Scholar, conférences (RSAC, SSTIC) sur l'évolution des SOC dans le monde.</p>
   </section>
 
-  <!-- LOISIRS -->
+  <!-- LOISIRS - Version Interactive & Vivante -->
   <section id="loisirs">
-    <div class="section-header"><div class="section-tag">// 07 — Loisirs & Passion</div><h2 class="section-title">Mon univers gaming</h2><div class="section-sub">Entre immersion militaire et créativité débridée, voici ce qui me motive hors des lignes de code.</div></div>
+    <div class="section-header">
+      <div class="section-tag">// 07 — Loisirs & Passion</div>
+      <h2 class="section-title">Mon univers gaming 🎮</h2>
+      <div class="section-sub">Entre action tactique intense et créativité sans limites — voici ce qui me drive hors des lignes de code.</div>
+    </div>
+
     <div class="loisirs-grid">
-      <div class="loisir-card"><div class="loisir-icon">🎯</div><div class="loisir-title">CALL OF DUTY</div><div class="loisir-sub">Modern Warfare • Black Ops • Warzone</div><div class="loisir-desc">Stratégie, réflexes et travail d'équipe. La franchise Call of Duty m'apprend la réactivité, la coordination sous pression et l'analyse rapide des situations — des compétences utiles aussi en cybersécurité !</div><div class="loisir-stats"><div class="stat"><div class="stat-value">★ Prestige Master</div><div class="stat-label">MWIII</div></div><div class="stat"><div class="stat-value">Top 5%</div><div class="stat-label">KD Ratio Warzone</div></div><div class="stat"><div class="stat-value">Esport</div><div class="stat-label">Tournois entre amis</div></div></div><div class="badge-game">🔫 Tactique • Réactivité • Teamplay</div></div>
-      <div class="loisir-card"><div class="loisir-icon">🧱</div><div class="loisir-title">ROBLOX</div><div class="loisir-sub">Création • Développement • Communauté</div><div class="loisir-desc">Bien plus qu'un jeu, Roblox est un terrain de jeu infini pour la créativité. J'y explore la création de mini-jeux, le scripting Lua et la conception d'expériences immersives. Un excellent laboratoire pour comprendre la mécanique des jeux en ligne.</div><div class="loisir-stats"><div class="stat"><div class="stat-value">500h+</div><div class="stat-label">Sur Roblox Studio</div></div><div class="stat"><div class="stat-value">Mini-jeux</div><div class="stat-label">Créés & partagés</div></div><div class="stat"><div class="stat-value">Dev</div><div class="stat-label">Scripting Lua</div></div></div><div class="badge-game">🎨 Créatif • Code • Imagination</div></div>
+      <!-- BLOOD STRIKE -->
+      <div class="loisir-card interactive-card">
+        <div class="loisir-icon">🎯</div>
+        <div class="loisir-title">Blood Strike</div>
+        <div class="loisir-sub">Battle Royale FPS • Tactique • Survie</div>
+        <div class="loisir-desc">Un Battle Royale mobile ultra-compétitif, rapide et précis. Blood Strike demande une lecture de carte instantanée, des décisions sous pression et un travail d'équipe sans faille — des réflexes directement transposables à la réactivité en cybersécurité.</div>
+        <div class="loisir-stats">
+          <div class="stat stat-hover"><div class="stat-value" style="color:#E24B4A;">Top 3%</div><div class="stat-label">🏆 Classement</div></div>
+          <div class="stat stat-hover"><div class="stat-value" style="color:#E24B4A;">500+</div><div class="stat-label">🎮 Parties</div></div>
+          <div class="stat stat-hover"><div class="stat-value" style="color:#E24B4A;">Squad</div><div class="stat-label">🤝 Mode préféré</div></div>
+        </div>
+        <div class="skill-bars-container">
+          <div class="skill-bar-item"><span>⚡ Réflexes</span><div class="bar-bg"><div class="bar-fill blood-fill" data-width="90"></div></div><span class="percent">0%</span></div>
+          <div class="skill-bar-item"><span>🗺️ Lecture de map</span><div class="bar-bg"><div class="bar-fill blood-fill" data-width="82"></div></div><span class="percent">0%</span></div>
+          <div class="skill-bar-item"><span>🎧 Coordination</span><div class="bar-bg"><div class="bar-fill blood-fill" data-width="78"></div></div><span class="percent">0%</span></div>
+        </div>
+        <div class="badge-game blood-badge">⚡ Réactivité • 🎯 Tactique • 🤝 Teamplay • 🔥 Survie</div>
+      </div>
+
+      <!-- ROBLOX STUDIO -->
+      <div class="loisir-card interactive-card">
+        <div class="loisir-icon">🧱</div>
+        <div class="loisir-title">Roblox Studio</div>
+        <div class="loisir-sub">Dev • Scripting Lua • Création de jeux</div>
+        <div class="loisir-desc">Bien plus qu'un jeu — un vrai terrain de création. Sur Roblox Studio, je conçois des mini-jeux, j'écris du code Lua, je gère des logiques de gameplay et j'explore la mécanique des serveurs multijoueurs. Un laboratoire de développement concret.</div>
+        <div class="loisir-stats">
+          <div class="stat stat-hover"><div class="stat-value" style="color:#378ADD;">500h+</div><div class="stat-label">⏱️ Studio</div></div>
+          <div class="stat stat-hover"><div class="stat-value" style="color:#378ADD;">12+</div><div class="stat-label">🎮 Mini-jeux</div></div>
+          <div class="stat stat-hover"><div class="stat-value" style="color:#378ADD;">Lua</div><div class="stat-label">💻 Scripting</div></div>
+        </div>
+        <div class="skill-bars-container">
+          <div class="skill-bar-item"><span>💻 Scripting Lua</span><div class="bar-bg"><div class="bar-fill roblox-fill" data-width="72"></div></div><span class="percent">0%</span></div>
+          <div class="skill-bar-item"><span>🎨 Game design</span><div class="bar-bg"><div class="bar-fill roblox-fill" data-width="80"></div></div><span class="percent">0%</span></div>
+          <div class="skill-bar-item"><span>🏗️ Level design</span><div class="bar-bg"><div class="bar-fill roblox-fill" data-width="65"></div></div><span class="percent">0%</span></div>
+        </div>
+        <div class="badge-game roblox-badge">💻 Code • ✨ Créativité • 🌐 Multijoueur • 🧠 Imagination</div>
+      </div>
     </div>
   </section>
 
@@ -822,6 +960,25 @@
       });
     });
 
+    // Animation des barres de compétences dans la section Loisirs (au scroll)
+    function animateLoisirSkills() {
+      const fillBars = document.querySelectorAll('.bar-fill');
+      fillBars.forEach(bar => {
+        const rect = bar.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight - 100;
+        if (isVisible && bar.style.width !== bar.getAttribute('data-width') + '%') {
+          const targetWidth = bar.getAttribute('data-width');
+          bar.style.width = targetWidth + '%';
+          const parent = bar.closest('.skill-bar-item');
+          const percentSpan = parent.querySelector('.percent');
+          if (percentSpan) percentSpan.textContent = targetWidth + '%';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateLoisirSkills);
+    window.addEventListener('load', animateLoisirSkills);
+
     // lien CV
     const cvLink = document.getElementById('cvLink');
     if(cvLink) {
@@ -838,7 +995,13 @@
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(s => { if(window.scrollY >= s.offsetTop - 150) current = s.id; });
-      navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#'+current ? 'var(--primary)' : ''; });
+      navLinks.forEach(a => { 
+        if(a.getAttribute('href') === '#'+current) {
+          a.style.color = 'var(--primary)';
+        } else {
+          a.style.color = '';
+        }
+      });
     });
   </script>
 </body>
