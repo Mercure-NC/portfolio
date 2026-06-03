@@ -755,7 +755,7 @@
       <div class="hero-main-title">C'est <span>mon portfolio</span></div>
       <div class="hero-name">TAIRIO Yoran</div>
       <div class="hero-bio">
-        je suis actuellement étudiant en BTS SIO option SISR (Solutions d'Infrastructure, Systèmes et Réseaux) en Nouvelle-Calédonie. Je construis des compétences solides en infrastructure IT à travers ma formation, mes projets personnels et mes stages en entreprise. Mon objectif est de devenir un expert en sécurité des systèmes d'information et de contribuer à la protection des données dans un monde de plus en plus connecté.
+        Je suis actuellement étudiant en BTS SIO option SISR (Solutions d'Infrastructure, Systèmes et Réseaux) en Nouvelle-Calédonie. Je construis des compétences solides en infrastructure IT à travers ma formation, mes projets personnels et mes stages en entreprise. Mon objectif est de devenir un expert en sécurité des systèmes d'information et de contribuer à la protection des données dans un monde de plus en plus connecté.
       </div>
       <div class="btn-group">
         <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">📬 Me contacter</button>
@@ -884,7 +884,8 @@
     <div class="cv-block">
       <div class="cv-title">📄 Mon Curriculum Vitae</div>
       <p style="margin-top:0.5rem; opacity:0.9">Version la plus récente — à jour 2026</p>
-      <a href="file:///C:/Users/Ad/Downloads/CV-proffesionel.pdf" download class="cv-link" id="cvLink">⬇️ Télécharger mon CV (PDF)</a>
+      <!-- LIEN CV CORRECTEMENT CONFIGURÉ -->
+      <a href="#" download class="cv-link" id="cvLink">⬇️ Télécharger mon CV (PDF)</a>
       <p style="margin-top:1rem; font-size:0.7rem; opacity:0.7">Format PDF • Mis à jour régulièrement</p>
     </div>
   </section>
@@ -979,13 +980,29 @@
     window.addEventListener('scroll', animateLoisirSkills);
     window.addEventListener('load', animateLoisirSkills);
 
-    // lien CV
+    // LIEN CV - Configuration pour télécharger le fichier PDF
     const cvLink = document.getElementById('cvLink');
     if(cvLink) {
-      cvLink.href = "#";
-      cvLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert("🔗 Remplace ce lien par le chemin vers ton CV (PDF)");
+      // Utilise le fichier CV fourni dans le contexte de l'utilisateur
+      // Le fichier s'appelle "CV-proffesionel.pdf"
+      cvLink.href = "CV-proffesionel.pdf";
+      cvLink.download = "CV-TAIRIO-Yoran-BTS-SIO.pdf";
+      
+      // Gestionnaire d'erreur si le fichier n'existe pas
+      cvLink.addEventListener('click', function(e) {
+        // Test si le fichier est accessible (optionnel)
+        fetch(cvLink.href, { method: 'HEAD' })
+          .then(response => {
+            if (!response.ok) {
+              console.warn("Fichier CV non trouvé, utilisation de l'alternative");
+              alert("⚠️ Le fichier CV n'a pas été trouvé. Veuillez vous assurer que 'CV-proffesionel.pdf' est dans le même dossier que cette page.\n\nVous pouvez aussi glisser-déposer votre CV PDF dans le dossier du site.");
+              e.preventDefault();
+            }
+          })
+          .catch(() => {
+            alert("⚠️ Le fichier CV n'est pas accessible. Assurez-vous que 'CV-proffesionel.pdf' est présent dans le même dossier.");
+            e.preventDefault();
+          });
       });
     }
 
