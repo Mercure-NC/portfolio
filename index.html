@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* ... (garder tous les styles identiques) ... */
     * {
       margin: 0;
       padding: 0;
@@ -601,6 +600,7 @@
     }
     .blood-fill { background: linear-gradient(90deg, #E24B4A, #A32D2D); }
     .roblox-fill { background: linear-gradient(90deg, #378ADD, #534AB7); }
+    .poker-fill { background: linear-gradient(90deg, #D4AF37, #B8860B); }
     .skill-bar-item .percent {
       min-width: 35px;
       text-align: right;
@@ -624,6 +624,54 @@
     }
     .blood-badge { background: rgba(226, 75, 74, 0.1); color: #A32D2D; }
     .roblox-badge { background: rgba(55, 138, 221, 0.1); color: #185FA5; }
+    .poker-badge { background: linear-gradient(135deg, #D4AF37, #B8860B); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+
+    /* Carte Poker avec fond casino Nouvelle-Calédonie */
+    .poker-card {
+      background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+    .poker-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.08"><path fill="%23D4AF37" d="M20,20 L30,20 L25,12 Z M70,20 L80,20 L75,12 Z M45,45 L55,45 L50,35 Z M20,70 L30,70 L25,62 Z M70,70 L80,70 L75,62 Z M50,85 L50,75 L42,80 Z M50,85 L50,75 L58,80 Z"/><circle cx="50" cy="50" r="8" fill="%23D4AF37"/><rect x="48" y="25" width="4" height="15" fill="%23D4AF37"/><rect x="48" y="60" width="4" height="15" fill="%23D4AF37"/></svg>');
+      background-repeat: repeat;
+      background-size: 40px;
+      pointer-events: none;
+    }
+    .poker-card::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      pointer-events: none;
+      border-radius: 0 0 28px 28px;
+    }
+    .poker-card .loisir-icon {
+      filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+    }
+    .poker-card .loisir-title {
+      background: linear-gradient(135deg, #D4AF37, #FFD700, #B8860B);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+    }
+    .poker-card .loisir-sub {
+      color: #D4AF37;
+    }
+    .poker-card .stat-value {
+      color: #D4AF37 !important;
+    }
 
     .cv-block {
       background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
@@ -704,7 +752,6 @@
       font-size: 0.8rem;
     }
 
-    /* Modal pour sélectionner le CV */
     .modal-cv {
       display: none;
       position: fixed;
@@ -781,7 +828,6 @@
   <div class="cursor"></div>
   <div class="cursor-trail"></div>
 
-  <!-- MODAL POUR SÉLECTIONNER LE CV -->
   <div id="cvModal" class="modal-cv">
     <div class="modal-cv-content">
       <h3>📄 Télécharger mon CV</h3>
@@ -795,23 +841,21 @@
     </div>
   </div>
 
-  <!-- NAVIGATION -->
   <nav>
     <div class="logo">YT.</div>
     <ul>
-      <li><a href="#projets">Projets</a></li>
-      <li><a href="#competences">Compétences</a></li>
       <li><a href="#parcours">Parcours</a></li>
-      <li><a href="#stages">Stages</a></li>
+      <li><a href="#competences">Compétences</a></li>
       <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#stages">Stages</a></li>
       <li><a href="#veille">Veille SOC</a></li>
+      <li><a href="#projets">Projets</a></li>
       <li><a href="#loisirs">Loisirs</a></li>
       <li><a href="#cv">CV</a></li>
       <li><a href="#contact" class="nav-btn">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- HERO TEXTE -->
   <div class="hero-section">
     <div class="hero-content">
       <div class="hero-badge">✨ Portfolio BTS SIO • Spé SISR</div>
@@ -827,18 +871,14 @@
     </div>
   </div>
 
-  <!-- PROJETS -->
-  <section id="projets">
-    <div class="section-header"><div class="section-tag">// 01 — Projets</div><h2 class="section-title">Mes réalisations</h2><div class="section-sub">Projets réalisés en cours, en TP et en autonomie dans le cadre de mon BTS SIO.</div></div>
-    <div class="projets-grid">
-      <div class="projet-card"><div class="projet-icon">🖧</div><div class="projet-tags"><span class="tag">Réseau</span><span class="tag tag-accent">Cisco Packet Tracer</span><span class="tag">VLAN</span></div><div class="projet-title">Architecture réseau d'entreprise</div><div class="projet-desc">Conception et simulation d'une infrastructure réseau complète pour une entreprise fictive : segmentation en VLANs, routage inter-VLAN, configuration DHCP, ACL et redondance avec HSRP. Réalisé sous Cisco Packet Tracer avec documentation technique complète.</div><a href="#" class="projet-link">Voir le projet →</a></div>
-      <div class="projet-card"><div class="projet-icon">🔒</div><div class="projet-tags"><span class="tag tag-accent">Sécurité</span><span class="tag">Linux</span></div><div class="projet-title">Mise en place d'un pare-feu</div><div class="projet-desc">Installation et configuration d'un pare-feu en VM : règles de filtrage et monitoring des flux réseau (HIDS & IDS).</div><a href="#" class="projet-link">Voir le projet →</a></div>
-      <div class="projet-card"><div class="projet-icon">🐧</div><div class="projet-tags"><span class="tag">Linux</span><span class="tag">Serveur</span></div><div class="projet-title">Administration serveur Proxmox</div><div class="projet-desc">Déploiement et administration d'un hyperviseur Proxmox : création de VMs, gestion des ressources et sauvegarde des environnements virtuels.</div><a href="#" class="projet-link">Voir le projet →</a></div>
-      <div class="projet-card"><div class="projet-icon">📡</div><div class="projet-tags"><span class="tag">Supervision</span><span class="tag tag-accent">Zabbix</span></div><div class="projet-title">Supervision réseau avec Zabbix</div><div class="projet-desc">Mise en œuvre d'une solution de supervision réseau : installation Zabbix, ajout d'hôtes, création de triggers et tableaux de bord d'alertes en temps réel.</div><a href="#" class="projet-link">Voir le projet →</a></div>
+  <section id="parcours">
+    <div class="section-header"><div class="section-tag">// 01 — Parcours</div><h2 class="section-title">Mon cursus</h2><div class="section-sub">Mon itinéraire scolaire et mes formations dans l'informatique.</div></div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-date">2025 → 2026</div><div class="timeline-content"><div class="timeline-title">BTS SIO — Spécialité SISR</div><div class="timeline-place">📍 Lycée Dick Ukeiwë — Nouméa, Nouvelle-Calédonie</div><div class="timeline-desc">Formation en 2 ans en Solutions d'Infrastructure, Systèmes et Réseaux. Apprentissage de l'administration système Linux/Windows, la gestion des réseaux, la cybersécurité et les services cloud. Projets en TP et en entreprise via des stages.</div></div></div>
+      <div class="timeline-item"><div class="timeline-date">2022 → 2024</div><div class="timeline-content"><div class="timeline-title">Baccalauréat Général</div><div class="timeline-place">📍 Lycée A. Anova — Nouvelle-Calédonie</div><div class="timeline-desc">Obtention du baccalauréat avec les spécialités Mathématiques & NSI (Numérique et Sciences Informatiques). Premières bases en programmation, réseaux et algorithmique.</div></div></div>
     </div>
   </section>
 
-  <!-- COMPÉTENCES -->
   <section id="competences">
     <div class="section-header"><div class="section-tag">// 02 — Compétences</div><h2 class="section-title">Ce que je maîtrise</h2><div class="section-sub">Des compétences acquises en cours, en TP et par la pratique personnelle.</div></div>
     <div class="skills-grid">
@@ -848,27 +888,8 @@
     </div>
   </section>
 
-  <!-- PARCOURS -->
-  <section id="parcours">
-    <div class="section-header"><div class="section-tag">// 03 — Parcours</div><h2 class="section-title">Mon cursus</h2><div class="section-sub">Mon itinéraire scolaire et mes formations dans l'informatique.</div></div>
-    <div class="timeline">
-      <div class="timeline-item"><div class="timeline-date">2025 → 2026</div><div class="timeline-content"><div class="timeline-title">BTS SIO — Spécialité SISR</div><div class="timeline-place">📍 Lycée Dick Ukeiwë — Nouméa, Nouvelle-Calédonie</div><div class="timeline-desc">Formation en 2 ans en Solutions d'Infrastructure, Systèmes et Réseaux. Apprentissage de l'administration système Linux/Windows, la gestion des réseaux, la cybersécurité et les services cloud. Projets en TP et en entreprise via des stages.</div></div></div>
-      <div class="timeline-item"><div class="timeline-date">2022 → 2024</div><div class="timeline-content"><div class="timeline-title">Baccalauréat Général</div><div class="timeline-place">📍 Lycée A. Anova — Nouvelle-Calédonie</div><div class="timeline-desc">Obtention du baccalauréat avec les spécialités Mathématiques & NSI (Numérique et Sciences Informatiques). Premières bases en programmation, réseaux et algorithmique.</div></div></div>
-    </div>
-  </section>
-
-  <!-- STAGES -->
-  <section id="stages">
-    <div class="section-header"><div class="section-tag">// 04 — Expériences</div><h2 class="section-title">Stages &amp; expériences</h2><div class="section-sub">Mes immersions en entreprise dans le cadre du BTS SIO.</div></div>
-    <div class="stages-grid">
-      <div class="stage-card"><div class="stage-header"><div class="stage-company">Haut-Commissariat de la NC</div><div class="stage-period">Oct. — Nov. 2025</div></div><div class="stage-role">Technicien réseau / Stagiaire SISR</div><div class="stage-desc">Participation à la maintenance du parc informatique, câblage réseau, configuration de switches et assistance utilisateurs. Découverte de l'environnement professionnel IT en entreprise.</div><div class="stage-skills"><span class="sskill">Câblage</span><span class="sskill">Switch</span><span class="sskill">Support N1</span><span class="sskill">Active Directory</span></div></div>
-      <div class="stage-card"><div class="stage-header"><div class="stage-company">Entreprise [à compléter]</div><div class="stage-period">Janv. — Fév. 2026</div></div><div class="stage-role">Administrateur systèmes / Stagiaire</div><div class="stage-desc">Administration de serveurs Linux, mise à jour des configurations réseau, participation à la supervision des équipements et rédaction de documentations techniques.</div><div class="stage-skills"><span class="sskill">Linux</span><span class="sskill">Supervision</span><span class="sskill">Documentation</span><span class="sskill">Bash</span></div></div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS -->
   <section id="certifications">
-    <div class="section-header"><div class="section-tag">// 05 — Certifications</div><h2 class="section-title">Mes certifications</h2><div class="section-sub">Certifications obtenues ou en cours de préparation pour valider mes compétences techniques.</div></div>
+    <div class="section-header"><div class="section-tag">// 03 — Certifications</div><h2 class="section-title">Mes certifications</h2><div class="section-sub">Certifications obtenues ou en cours de préparation pour valider mes compétences techniques.</div></div>
     <div class="certs-grid">
       <div class="cert-card"><div class="cert-icon">🌐</div><div class="cert-info"><div class="cert-name">Cisco CCNA — Introduction to Networks</div><div class="cert-org">Cisco Networking Academy</div><div class="cert-desc">Fondamentaux des réseaux : modèle OSI, TCP/IP, routage statique, configuration IOS de base.</div><div class="cert-badge">✅ Obtenu</div></div></div>
       <div class="cert-card"><div class="cert-icon">🐧</div><div class="cert-info"><div class="cert-name">NDG Linux Essentials</div><div class="cert-org">Cisco / Linux Professional Institute</div><div class="cert-desc">Commandes Linux essentielles, gestion des fichiers, permissions et premiers scripts shell.</div><div class="cert-badge">🔄 En cours</div></div></div>
@@ -879,9 +900,16 @@
     </div>
   </section>
 
-  <!-- VEILLE TECHNOLOGIQUE SOC -->
+  <section id="stages">
+    <div class="section-header"><div class="section-tag">// 04 — Expériences</div><h2 class="section-title">Stages &amp; expériences</h2><div class="section-sub">Mes immersions en entreprise dans le cadre du BTS SIO.</div></div>
+    <div class="stages-grid">
+      <div class="stage-card"><div class="stage-header"><div class="stage-company">Haut-Commissariat de la NC</div><div class="stage-period">Oct. — Nov. 2025</div></div><div class="stage-role">Technicien réseau / Stagiaire SISR</div><div class="stage-desc">Participation à la maintenance du parc informatique, câblage réseau, configuration de switches et assistance utilisateurs. Découverte de l'environnement professionnel IT en entreprise.</div><div class="stage-skills"><span class="sskill">Câblage</span><span class="sskill">Switch</span><span class="sskill">Support N1</span><span class="sskill">Active Directory</span></div></div>
+      <div class="stage-card"><div class="stage-header"><div class="stage-company">Entreprise [à compléter]</div><div class="stage-period">Janv. — Fév. 2026</div></div><div class="stage-role">Administrateur systèmes / Stagiaire</div><div class="stage-desc">Administration de serveurs Linux, mise à jour des configurations réseau, participation à la supervision des équipements et rédaction de documentations techniques.</div><div class="stage-skills"><span class="sskill">Linux</span><span class="sskill">Supervision</span><span class="sskill">Documentation</span><span class="sskill">Bash</span></div></div>
+    </div>
+  </section>
+
   <section id="veille">
-    <div class="section-header"><div class="section-tag">// 06 — Veille technologique SOC</div><h2 class="section-title">L'Évolution du SOC : de la Préhistoire à l'IA</h2><div class="section-sub">Veille active sur les centres d'opération de sécurité, l'essor de l'IA et les actualités récentes marquantes.</div></div>
+    <div class="section-header"><div class="section-tag">// 05 — Veille technologique SOC</div><h2 class="section-title">L'Évolution du SOC : de la Préhistoire à l'IA</h2><div class="section-sub">Veille active sur les centres d'opération de sécurité, l'essor de l'IA et les actualités récentes marquantes.</div></div>
     <div class="veille-grid">
       <div class="veille-card history-card"><div class="veille-head"><div class="veille-icon">📜</div><div class="veille-theme">Mini-Cours : Histoire du SOC</div></div><div class="timeline-soc"><div class="soc-era"><span class="soc-era-year">1990 - 2000</span><span class="soc-era-desc"><strong>⚫ L'ère préhistorique</strong> — Les premiers SOC apparaissent dans les banques et les institutions militaires. Surveillance manuelle des logs, corrélation basique. Naissance des premiers SIEM rudimentaires.</span></div><div class="soc-era"><span class="soc-era-year">2000 - 2010</span><span class="soc-era-desc"><strong>🔵 La professionnalisation</strong> — Généralisation des SOC dans les grandes entreprises. Apparition des premiers CERT (Computer Emergency Response Teams). Les analystes passent leurs nuits à surveiller des alertes.</span></div><div class="soc-era"><span class="soc-era-year">2010 - 2020</span><span class="soc-era-desc"><strong>🟣 L'ère du Big Data</strong> — Explosion des volumes de données. Les SOC adoptent les SIEM nouvelle génération (Splunk, QRadar). Automatisation des tâches répétitives. Naissance du SOAR.</span></div><div class="soc-era"><span class="soc-era-year">2020 - 2025</span><span class="soc-era-desc"><strong>🟢 L'IA entre en jeu</strong> — Machine Learning pour la détection d'anomalies. Réduction drastique des faux positifs. Les SOC deviennent prédictifs plutôt que réactifs.</span></div><div class="soc-era"><span class="soc-era-year">2025 →</span><span class="soc-era-desc"><strong>✨ Le SOC augmenté</strong> — IA générative, SOC autonomes, investigation en langage naturel. Le SOC du futur est hybride : humain + IA collaborent en temps réel.</span></div></div></div>
       <div class="veille-card"><div class="veille-head"><div class="veille-icon">🧠</div><div class="veille-theme">Google Cloud Sec-Ops : SOC augmenté par Gemini</div></div><div class="veille-desc"><span class="tag" style="background:rgba(59,130,246,0.2); color:var(--primary);">⚡ Actualité majeure</span> — Google dévoile une offre "Autonomous Security Operations" avec Gemini intégré nativement. Réduction de 70% du temps d'investigation et génération automatique de playbooks. Une rupture dans l'industrie du SOC.</div></div>
@@ -893,14 +921,26 @@
     <p style="color:var(--text-muted); margin-top:2rem; text-align:center; font-family:'Space Mono'; font-size:0.75rem;">🔍 Veille active : RSS feeds, alertes Google Scholar, conférences (RSAC, SSTIC) sur l'évolution des SOC dans le monde.</p>
   </section>
 
-  <!-- LOISIRS -->
+  <section id="projets">
+    <div class="section-header"><div class="section-tag">// 06 — Projets</div><h2 class="section-title">Mes réalisations</h2><div class="section-sub">Projets réalisés en cours, en TP et en autonomie dans le cadre de mon BTS SIO.</div></div>
+    <div class="projets-grid">
+      <div class="projet-card"><div class="projet-icon">🖧</div><div class="projet-tags"><span class="tag">Réseau</span><span class="tag tag-accent">Cisco Packet Tracer</span><span class="tag">VLAN</span></div><div class="projet-title">Architecture réseau d'entreprise</div><div class="projet-desc">Conception et simulation d'une infrastructure réseau complète pour une entreprise fictive : segmentation en VLANs, routage inter-VLAN, configuration DHCP, ACL et redondance avec HSRP. Réalisé sous Cisco Packet Tracer avec documentation technique complète.</div><a href="#" class="projet-link">Voir le projet →</a></div>
+      <div class="projet-card"><div class="projet-icon">🔒</div><div class="projet-tags"><span class="tag tag-accent">Sécurité</span><span class="tag">Linux</span></div><div class="projet-title">Mise en place d'un pare-feu</div><div class="projet-desc">Installation et configuration d'un pare-feu en VM : règles de filtrage et monitoring des flux réseau (HIDS & IDS).</div><a href="#" class="projet-link">Voir le projet →</a></div>
+      <div class="projet-card"><div class="projet-icon">🐧</div><div class="projet-tags"><span class="tag">Linux</span><span class="tag">Serveur</span></div><div class="projet-title">Administration serveur Proxmox</div><div class="projet-desc">Déploiement et administration d'un hyperviseur Proxmox : création de VMs, gestion des ressources et sauvegarde des environnements virtuels.</div><a href="#" class="projet-link">Voir le projet →</a></div>
+      <div class="projet-card"><div class="projet-icon">📡</div><div class="projet-tags"><span class="tag">Supervision</span><span class="tag tag-accent">Zabbix</span></div><div class="projet-title">Supervision réseau avec Zabbix</div><div class="projet-desc">Mise en œuvre d'une solution de supervision réseau : installation Zabbix, ajout d'hôtes, création de triggers et tableaux de bord d'alertes en temps réel.</div><a href="#" class="projet-link">Voir le projet →</a></div>
+    </div>
+  </section>
+
+  <!-- SECTION LOISIRS AVEC POKER EN PLUS -->
   <section id="loisirs">
     <div class="section-header">
       <div class="section-tag">// 07 — Loisirs & Passion</div>
       <h2 class="section-title">Mon univers gaming 🎮</h2>
       <div class="section-sub">Entre action tactique intense et créativité sans limites — voici ce qui me drive hors des lignes de code.</div>
     </div>
+
     <div class="loisirs-grid">
+      <!-- Blood Strike -->
       <div class="loisir-card interactive-card">
         <div class="loisir-icon">🎯</div>
         <div class="loisir-title">Blood Strike</div>
@@ -918,6 +958,8 @@
         </div>
         <div class="badge-game blood-badge">⚡ Réactivité • 🎯 Tactique • 🤝 Teamplay • 🔥 Survie</div>
       </div>
+
+      <!-- Roblox Studio -->
       <div class="loisir-card interactive-card">
         <div class="loisir-icon">🧱</div>
         <div class="loisir-title">Roblox Studio</div>
@@ -935,10 +977,28 @@
         </div>
         <div class="badge-game roblox-badge">💻 Code • ✨ Créativité • 🌐 Multijoueur • 🧠 Imagination</div>
       </div>
+
+      <!-- POKER - Carte spéciale Casino Nouvelle-Calédonie -->
+      <div class="loisir-card interactive-card poker-card">
+        <div class="loisir-icon">♠️♥️♣️♦️</div>
+        <div class="loisir-title">Poker</div>
+        <div class="loisir-sub">Texas Hold'em • Bluff • Stratégie</div>
+        <div class="loisir-desc">Passionné de poker depuis plusieurs années, j'apprécie la dimension stratégique, psychologique et mathématique du jeu. Que ce soit en ligne ou au Casino de Nouméa, le poker m'apprend la gestion des risques, la lecture d'adversaires et la prise de décision sous pression — des compétences précieuses en cybersécurité.</div>
+        <div class="loisir-stats">
+          <div class="stat stat-hover"><div class="stat-value" style="color:#D4AF37;">Tournois</div><div class="stat-label">🎲 Live & Online</div></div>
+          <div class="stat stat-hover"><div class="stat-value" style="color:#D4AF37;">Final Tables</div><div class="stat-label">🏆 Plusieurs podiums</div></div>
+          <div class="stat stat-hover"><div class="stat-value" style="color:#D4AF37;">Cash Game</div><div class="stat-label">💰 Régulier</div></div>
+        </div>
+        <div class="skill-bars-container">
+          <div class="skill-bar-item"><span>🧠 Psychologie / Bluff</span><div class="bar-bg"><div class="bar-fill poker-fill" data-width="85"></div></div><span class="percent">0%</span></div>
+          <div class="skill-bar-item"><span>📊 Calcul des cotes</span><div class="bar-bg"><div class="bar-fill poker-fill" data-width="78"></div></div><span class="percent">0%</span></div>
+          <div class="skill-bar-item"><span>🎯 Patience & discipline</span><div class="bar-bg"><div class="bar-fill poker-fill" data-width="88"></div></div><span class="percent">0%</span></div>
+        </div>
+        <div class="badge-game poker-badge">🎰 Casino de Nouméa • ♠️ Texas Hold'em • 🃏 Bluff • 📈 Bankroll Management</div>
+      </div>
     </div>
   </section>
 
-  <!-- CV -->
   <section id="cv">
     <div class="cv-block">
       <div class="cv-title">📄 Mon Curriculum Vitae</div>
@@ -948,9 +1008,8 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
-    <div class="section-header"><div class="section-tag">// 08 — Contact</div><h2 class="section-title">Travaillons ensemble</h2><div class="section-sub">Vous cherchez un stagiaire motivé en SISR, ou vous avez un projet sur lequel je peux contribuer ? N'hésitez pas à me contacter, je réponds rapidement.</div></div>
+    <div class="section-header"><div class="section-tag">// 09 — Contact</div><h2 class="section-title">Travaillons ensemble</h2><div class="section-sub">Vous cherchez un stagiaire motivé en SISR, ou vous avez un projet sur lequel je peux contribuer ? N'hésitez pas à me contacter, je réponds rapidement.</div></div>
     <div class="contact-grid">
       <div class="contact-info"><h3 style="margin-bottom:1rem">📬 Me joindre</h3><p>Nouvelle‑Calédonie • disponible pour alternance/stage</p><div class="contact-links"><a href="mailto:yoran.tairio@gmail.com" class="contact-link">✉️ yoran.tairio@gmail.com</a><a href="#" class="contact-link">💼 linkedin.com/in/yoran-tairio</a><a href="#" class="contact-link">📍 Nouméa, Nouvelle-Calédonie</a></div></div>
       <div class="contact-form"><h3 style="margin-bottom:1rem">✍️ Envoyer un message</h3><p style="margin-bottom:1rem; font-size:0.8rem; color:var(--text-muted);">Remplissez ce formulaire et je vous répondrai sous 24h.</p><input type="text" placeholder="Votre nom"/><input type="email" placeholder="Votre email"/><input type="text" placeholder="Objet"/><textarea rows="4" placeholder="Votre message..."></textarea><button>Envoyer →</button></div>
@@ -964,7 +1023,6 @@
   </footer>
 
   <script>
-    // curseur interactif
     const cursor = document.querySelector('.cursor');
     const trail = document.querySelector('.cursor-trail');
     let mouseX = 0, mouseY = 0;
@@ -979,7 +1037,6 @@
       trail.style.transform = `translate3d(${trailX - 16}px, ${trailY - 16}px, 0)`;
     });
 
-    // particules au clic
     document.addEventListener('click', (e) => {
       for (let i = 0; i < 8; i++) {
         const particle = document.createElement('div');
@@ -1000,7 +1057,6 @@
       }
     });
 
-    // effet hover
     const interactive = document.querySelectorAll('a, button, .projet-card, .skill-card, .stage-card, .veille-card, .loisir-card');
     interactive.forEach(el => {
       el.addEventListener('mouseenter', () => {
@@ -1019,7 +1075,6 @@
       });
     });
 
-    // Animation barres de compétences
     function animateLoisirSkills() {
       const fillBars = document.querySelectorAll('.bar-fill');
       fillBars.forEach(bar => {
@@ -1038,14 +1093,12 @@
     window.addEventListener('scroll', animateLoisirSkills);
     window.addEventListener('load', animateLoisirSkills);
 
-    // ========== GESTION CV CORRIGÉE ==========
     const modal = document.getElementById('cvModal');
     const cvLinkBtn = document.getElementById('cvLinkBtn');
     const fileInput = document.getElementById('cvFileInput');
     const confirmBtn = document.getElementById('confirmCvBtn');
     const closeModalBtn = document.getElementById('closeModalBtn');
 
-    // Fonction pour télécharger un fichier
     function downloadFile(file) {
       const url = URL.createObjectURL(file);
       const a = document.createElement('a');
@@ -1057,22 +1110,18 @@
       URL.revokeObjectURL(url);
     }
 
-    // Ouvrir le modal quand on clique sur le bouton CV
     cvLinkBtn.addEventListener('click', (e) => {
       e.preventDefault();
       modal.style.display = 'flex';
     });
 
-    // Fermer le modal
     closeModalBtn.addEventListener('click', () => {
       modal.style.display = 'none';
       fileInput.value = '';
     });
 
-    // Confirmer et télécharger
     confirmBtn.addEventListener('click', () => {
       if (fileInput.files.length > 0) {
-        // L'utilisateur a sélectionné un fichier
         const selectedFile = fileInput.files[0];
         if (selectedFile.type === 'application/pdf') {
           downloadFile(selectedFile);
@@ -1082,45 +1131,10 @@
           alert('Veuillez sélectionner un fichier PDF valide.');
         }
       } else {
-        // Pas de fichier sélectionné - essayer de trouver le CV par défaut
-        // Essayer différents chemins possibles
-        const possiblePaths = [
-          'CV-proffesionel.pdf',
-          'CV-professionel.pdf',
-          'CV.pdf',
-          'cv.pdf'
-        ];
-        
-        let found = false;
-        for (const path of possiblePaths) {
-          fetch(path, { method: 'HEAD' })
-            .then(response => {
-              if (response.ok && !found) {
-                found = true;
-                const a = document.createElement('a');
-                a.href = path;
-                a.download = 'CV-TAIRIO-Yoran.pdf';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                modal.style.display = 'none';
-              }
-            })
-            .catch(() => {});
-        }
-        
-        // Petit délai pour la notification
-        setTimeout(() => {
-          if (!found) {
-            alert('📄 Aucun CV trouvé.\n\nCliquez sur "OK" puis sélectionnez manuellement votre fichier CV (PDF) dans la fenêtre qui s\'ouvre.\n\n(C\'est un sécurité du navigateur - cela vous permet de choisir le fichier depuis votre ordinateur)');
-            // Réouvrir le modal pour que l'utilisateur puisse sélectionner
-            modal.style.display = 'flex';
-          }
-        }, 500);
+        alert('📄 Veuillez sélectionner votre fichier CV (PDF)');
       }
     });
 
-    // Fermer le modal en cliquant en dehors
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.style.display = 'none';
@@ -1128,7 +1142,6 @@
       }
     });
 
-    // Navigation active
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('nav ul a');
     window.addEventListener('scroll', () => {
